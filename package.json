@@ -1,0 +1,18 @@
+{
+  "name": "heroes-clash",
+  "version": "1.0.0",
+  "description": "A web app like a card-game were heroes fight",
+  "main": "js/script.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.2.11"
+  }
+}
