@@ -59,10 +59,11 @@ const suggestions = document.getElementById('suggestions');
 // let attack = document.querySelector('js-attack');
 // let heroImg = document.querySelector('js-hero-img');
 // let heroName = document.querySelector('js-favourite-hero');
-const allHeros = document.getElementById('all-heros')
+const allHeros = document.getElementById('all-heros');
 const heroesTemplate = document.getElementById("heroes-template");
 let selectedHeroes = [];
 console.log(selectedHeroes)
+const showFightResult = document.getElementById('show-fight-reslut');
 
 /**
  * Create a template and loads informations about the hero.
@@ -231,7 +232,9 @@ function startBattleRoyalInterval(characterArray) {
 
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
-        console.log(fight(challengers));
+        // console.log(fight(challengers));
+        //show fight result
+        showFightResult.innerText = fight(challengers)
         characterArray = burnTheDead(characterArray);
 
         if (characterArray.length === 1) {
@@ -278,7 +281,6 @@ function listenToHeroes(targetClass) {
 listenToHeroes('.js-hero-card')
 
 function handleClickHero(e) {
-    // console.log(e.target.parentNode)
     selectedHeroes.push(e.target.parentNode);
     showSelectedHeros(selectedHeroes);
 
@@ -322,13 +324,12 @@ function constructHeroCharacter(hero) {
 }
 
 function startFight() {
+    if(characters===null){return}
     startBattleRoyalInterval(characters);
     console.table(startBattleRoyalInterval(characters));
 }
 
-document.getElementById("start-fight").addEventListener("click",()=>{
-    startBattleRoyalInterval(characters);
-    console.table(startBattleRoyalInterval(characters));
+document.getElementById("start-fight").addEventListener("click", () => {
+    startFight()
 })
 
- console.log(document.getElementById("start-fight"))
