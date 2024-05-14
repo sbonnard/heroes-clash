@@ -1,55 +1,55 @@
-let characters = [
-    {
+// let characters = [
+//     {
 
-        name: 'Chun-li',
-        //powerstats.combat
-        "powerstats": {
-            "intelligence": 38,
-            "strength": 100,
-            "speed": 17,
-            "durability": 80,
-            "power": 24,
-            "combat": 64
-        },
-    },
-    {
-        name: 'Ryu',
-        "powerstats": {
-            "intelligence": 38,
-            "strength": 100,
-            "speed": 17,
-            "durability": 80,
-            "power": 24,
-            "combat": 64
-        },
-    },
-    {
-        name: 'Ken',
-        "powerstats": {
-            "intelligence": 38,
-            "strength": 100,
-            "speed": 17,
-            "durability": 80,
-            "power": 24,
-            "combat": 64
-        },
+//         name: 'Chun-li',
+//         //powerstats.combat
+//         "powerstats": {
+//             "intelligence": 38,
+//             "strength": 100,
+//             "speed": 17,
+//             "durability": 80,
+//             "power": 24,
+//             "combat": 64
+//         },
+//     },
+//     {
+//         name: 'Ryu',
+//         "powerstats": {
+//             "intelligence": 38,
+//             "strength": 100,
+//             "speed": 17,
+//             "durability": 80,
+//             "power": 24,
+//             "combat": 64
+//         },
+//     },
+//     {
+//         name: 'Ken',
+//         "powerstats": {
+//             "intelligence": 38,
+//             "strength": 100,
+//             "speed": 17,
+//             "durability": 80,
+//             "power": 24,
+//             "combat": 64
+//         },
 
-    },
-    {
-        name: 'Zangief',
-        "powerstats": {
-            "intelligence": 38,
-            "strength": 100,
-            "speed": 17,
-            "durability": 80,
-            "power": 24,
-            "combat": 64
-        },
+//     },
+//     {
+//         name: 'Zangief',
+//         "powerstats": {
+//             "intelligence": 38,
+//             "strength": 100,
+//             "speed": 17,
+//             "durability": 80,
+//             "power": 24,
+//             "combat": 64
+//         },
 
-    }
-];
+//     }
+// ];
 
-
+const characters = []
 
 import Heroes from "/json/api-heroes.json" with {type: "json" }
 const inputField = document.getElementById('inputField');
@@ -62,6 +62,7 @@ const suggestions = document.getElementById('suggestions');
 const allHeros = document.getElementById('all-heros')
 const heroesTemplate = document.getElementById("heroes-template");
 let selectedHeroes = [];
+console.log(selectedHeroes)
 
 /**
  * Create a template and loads informations about the hero.
@@ -69,6 +70,16 @@ let selectedHeroes = [];
 */
 function fillHeroTemplate(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
+    let heroLi = clone.querySelector('.js-hero-card')
+    //dataSet
+    heroLi.dataset.intelligence = hero.powerstats.intelligence
+    //reviewed to be deleted the two under
+    heroLi.dataset.name = hero.name;
+    heroLi.dataset.durability = hero.powerstats.durability
+    heroLi.dataset.strength = hero.powerstats.strength
+    heroLi.dataset.speed = hero.powerstats.speed
+    heroLi.dataset.power = hero.powerstats.power
+    heroLi.dataset.combat = hero.powerstats.combat
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
@@ -230,8 +241,8 @@ function startBattleRoyalInterval(characterArray) {
     }, 1000);
 }
 
-startBattleRoyalInterval(characters);
-console.table(startBattleRoyalInterval(characters));
+// startBattleRoyalInterval(characters);
+// console.table(startBattleRoyalInterval(characters));
 
 
 
@@ -280,6 +291,43 @@ function showSelectedHeros(heroes) {
     heroes.forEach(hero => {
         const selectedUL = document.getElementById("SelectedHero");
         selectedUL.appendChild(hero);
+        let character = constructHeroCharacter(hero)
+        characters.push(character)
 
     });
 }
+
+
+// name: 'Chun-li',
+// //powerstats.combat
+// "powerstats": {
+//     "intelligence": 38,
+//     "strength": 100,
+//     "speed": 17,
+//     "durability": 80,
+//     "power": 24,
+//     "combat": 64
+// },
+
+
+function constructHeroCharacter(hero) {
+    const character={powerstats:{}}
+    character.name=hero.dataset.name;
+    character.powerstats.intelligence=hero.dataset.intelligence;
+    character.powerstats.strength=hero.dataset.strength;
+    character.powerstats.durability=hero.dataset.durability;
+    character.powerstats.power=hero.dataset.power;
+    character.powerstats.combat=hero.dataset.combat;
+
+    console.log(character)
+    return character
+
+}
+
+//             "intelligence": 38,
+//             "strength": 100,
+//             "speed": 17,
+//             "durability": 80,
+//             "power": 24,
+//             "combat": 64
+console.log(characters)
