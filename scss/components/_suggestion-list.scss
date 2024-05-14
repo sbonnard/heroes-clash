@@ -1,6 +1,8 @@
 // Suggestions List
 
 .suggestions {
+    display: flex;
+    flex-direction: column;
     z-index: 1;
     width: 20.5rem;
     background-color: white;

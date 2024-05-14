@@ -28,9 +28,34 @@ button {
   cursor: pointer;
 }
 
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 /* Variables */
 /* Colours */
 /* Primary coulours */
 /* Secondary coulours */
 /* Components */
-/* Header *//*# sourceMappingURL=style.css.map */
+/* Header */
+/* Buttons */
+.button--minus {
+  content: "";
+  width: 1rem;
+  height: 1rem;
+  background-color: black;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  width: 20.5rem;
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
