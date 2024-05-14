@@ -16,6 +16,15 @@
 
     <main>
 
+        <section aria-labelledby="inputFieldLabel flex">
+            <h2>Choisis tes Héros</h2>
+            <input class="input" type="text" id="inputField" name="inputField"
+                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+            <label class="input__label" for="inputField" id="inputFieldLabel">
+                Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
+            <div class="suggestions" id="suggestions"></div>
+        </section>
+
         <!-- showing all heros -->
         <section class="container">
             <h2>Sélection de Héros</h2>
@@ -27,14 +36,10 @@
         <!-- showing all heros -->
 
         <section class="container">
-            <h2>Mes Héros</h2>
+            <h2>Votre Deck</h2>
 
             <div class="flex">
-                <label class="input__label" for="inputField">
-                    Choisis tes combattants en tapant <br>le nom de tes héros préférés ! </label>
-                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
-                    aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
-                <div class="suggestions" id="suggestions"></div>
+
                 <ul class="flex flex--horizontal" id="selectedItemsList"></ul>
             </div>
         </section>
