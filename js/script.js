@@ -1,5 +1,4 @@
 import Heroes from "/json/api-heroes.json" with {type: "json" }
-
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const suggestions = document.getElementById('suggestions');
@@ -9,10 +8,7 @@ const suggestions = document.getElementById('suggestions');
 // let heroName = document.querySelector('js-favourite-hero');
 const allHeros = document.getElementById('all-heros')
 const heroesTemplate = document.getElementById("heroes-template");
-
-
 let selectedHeroes = [];
-
 /**
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.
@@ -26,17 +22,14 @@ function fillHeroTemplate(hero) {
     clone.querySelector('.js-hero-img').src = hero.images.md;
     return clone
 }
-
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
 }
-
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
     if (inputText !== '') {
         suggestions.innerHTML = "";
         let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
-
         testList.forEach(hero => {
             let newHero = document.createElement('button');
             newHero.classList.add('js-suggestion', 'suggestions__itm');
@@ -58,7 +51,6 @@ inputField.addEventListener('keyup', function (event) {
         suggestions.innerHTML = '';
     }
 });
-
 
 /**
  * Return a random value between 0 and a chosen number.
@@ -195,14 +187,7 @@ function startBattleRoyalInterval(characterArray) {
 //show heros
 
 function showHeros(hero) {
-<<<<<<< HEAD
-    let clone = document.importNode(heroesTemplate.content, true);
-    console.log(clone)
-    fillHeroTemplate(hero);
-    console.log(fillHeroTemplate(hero))
-=======
     let clone = fillHeroTemplate(hero);
->>>>>>> 44298dffc7b9df84fe08f6a10f2f4a7a053a6853
     allHeros.appendChild(clone);
 
 }

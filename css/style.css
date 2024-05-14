@@ -43,8 +43,8 @@ input {
 /* Buttons */
 .button--minus {
   content: "";
-  width: 1rem;
-  height: 1rem;
+  width: 5rem;
+  height: 5rem;
   background-color: black;
 }
 
