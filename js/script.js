@@ -17,7 +17,7 @@ let selectedHeroes = [];
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.
  */
-function fillHeroTemplate (hero) {
+function fillHeroTemplate(hero) {
     heroesTemplate.content.getElementById('favourite-hero').innerHTML = hero.name;
     heroesTemplate.content.getElementById('pv').innerHTML = hero.powerstats.durability;
     heroesTemplate.content.getElementById('attack').innerHTML = hero.powerstats.strength;
@@ -188,15 +188,10 @@ function startBattleRoyalInterval(characterArray) {
 
 //show heros
 
-function showHeros(data) {
-
-    // console.log(data);
-    const oneHero = document.importNode(heroesTemplate.content, true);
-    const heroCard = oneHero.querySelector(".js-hero-card");
-    // heroName.textContent = data.name;
-    // heroImg.src = data
-    // heroCard.dataset.date = dataSet;
-    allHeros.appendChild(heroName)
+function showHeros(hero) {
+    let clone = document.importNode(heroesTemplate.content, true);
+    fillHeroTemplate(hero);
+    allHeros.appendChild(clone);
 
 }
 
