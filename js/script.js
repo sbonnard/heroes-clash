@@ -326,5 +326,9 @@ function startFight() {
     console.table(startBattleRoyalInterval(characters));
 }
 
+document.getElementById("start-fight").addEventListener("click",()=>{
+    startBattleRoyalInterval(characters);
+    console.table(startBattleRoyalInterval(characters));
+})
 
-console.log("hello")
+ console.log(document.getElementById("start-fight"))

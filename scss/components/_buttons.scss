@@ -2,9 +2,15 @@
 
 .button {
     &--minus {
-        content: '';
+        content: "";
         width: 5rem;
         height: 5rem;
         background-color: black;
     }
+}
+
+.start-fight {
+    width: 25%;
+    height: 5rem;
+    background-color: red;
 }
