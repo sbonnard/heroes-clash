@@ -4,6 +4,8 @@ const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const heroesTemplate = document.getElementById("heroes-template");
 const suggestions = document.getElementById('suggestions');
+const allHeros = document.getElementById('all-heros')
+
 
 let selectedHeroes = [];
 
@@ -172,17 +174,23 @@ function startBattleRoyalInterval(characterArray) {
 
 function showHeros(data) {
 
-
-    const template = document.getElementById("show-hero-template");
-    const oneHero = document.importNode(template.content, true);
-    const heroCard = dayElement.querySelector(".js-hero-card");
-    heroCard.textContent = data;
-    // heroCard.dataset.day = day;
+    // console.log(data);
+    const oneHero = document.importNode(heroesTemplate.content, true);
+    const heroCard = oneHero.querySelector(".js-hero-card");
+    heroCard.textContent = data.name;
+    heroCard.dataset.day = data.name;
     // heroCard.dataset.date = dataSet;
-    heroCard.setAttribute("datetime", currentDate);
-    if (isDayDisactive(dataSet, currentDate)) {
-        dayCell.classList.add("disactive");
-    }
+    allHeros.appendChild(heroCard)
 
-    daysContainer.appendChild(dayElement)
 }
+
+function showNOfHero(start, end, data) {
+    for (start; start < end; start++) {
+        console.log(data[start])  
+        showHeros(data[start]) //
+    }
+    return data[start]
+
+}
+
+showNOfHero(0, 10, Heroes)
