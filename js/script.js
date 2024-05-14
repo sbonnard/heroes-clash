@@ -2,24 +2,24 @@ import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
-const template = document.getElementById("favourite-template");
+const heroesTemplate = document.getElementById("heroes-template");
 const suggestions = document.getElementById('suggestions');
 
-let selectedRPG = [];
+let selectedHeroes = [];
 
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
     if (inputText !== '') {
         suggestions.innerHTML = "";
-        let testList = Heroes.filter(rpg => rpg.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
+        let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
         testList.forEach(item => {
-            let newItem = document.createElement('p');
+            let newItem = document.createElement('button');
             newItem.classList.add('js-suggestion', 'suggestions__itm');
             newItem.setAttribute('id', item.id);
             newItem.addEventListener('click', function () {
-                selectedRPG.push(item);
-                template.content.getElementById('favourite-rpg').innerHTML = item.name;
-                let clone = document.importNode(template.content, true);
+                selectedHeroes.push(item);
+                heroesTemplate.content.getElementById('favourite-hero').innerHTML = item.name;
+                let clone = document.importNode(heroesTemplate.content, true);
                 clone.querySelector('.button--minus').addEventListener('click', function (event) {
                     event.target.parentNode.remove();
                 });

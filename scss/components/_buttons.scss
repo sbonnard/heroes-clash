@@ -1,0 +1,10 @@
+/* Buttons */
+
+.button {
+    &--minus {
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        background-color: black;
+    }
+}
