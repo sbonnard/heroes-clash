@@ -241,9 +241,6 @@ function startBattleRoyalInterval(characterArray) {
     }, 1000);
 }
 
-// startBattleRoyalInterval(characters);
-// console.table(startBattleRoyalInterval(characters));
-
 
 
 
@@ -311,23 +308,23 @@ function showSelectedHeros(heroes) {
 
 
 function constructHeroCharacter(hero) {
-    const character={powerstats:{}}
-    character.name=hero.dataset.name;
-    character.powerstats.intelligence=hero.dataset.intelligence;
-    character.powerstats.strength=hero.dataset.strength;
-    character.powerstats.durability=hero.dataset.durability;
-    character.powerstats.power=hero.dataset.power;
-    character.powerstats.combat=hero.dataset.combat;
+    const character = { powerstats: {} }
+    character.name = hero.dataset.name;
+    character.powerstats.intelligence = hero.dataset.intelligence;
+    character.powerstats.strength = hero.dataset.strength;
+    character.powerstats.durability = hero.dataset.durability;
+    character.powerstats.power = hero.dataset.power;
+    character.powerstats.combat = hero.dataset.combat;
 
     console.log(character)
     return character
 
 }
 
-//             "intelligence": 38,
-//             "strength": 100,
-//             "speed": 17,
-//             "durability": 80,
-//             "power": 24,
-//             "combat": 64
-console.log(characters)
+function startFight() {
+    startBattleRoyalInterval(characters);
+    console.table(startBattleRoyalInterval(characters));
+}
+
+
+console.log("hello")
