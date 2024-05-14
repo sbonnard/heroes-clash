@@ -11,29 +11,40 @@ const heroName = document.getElementById('favourite-hero');
 
 let selectedHeroes = [];
 
+/**
+ * Create a template and loads informations about the hero.
+ * @param {object} hero The object from json file.
+ */
+function fillHeroTemplate (hero) {
+    heroesTemplate.content.getElementById('favourite-hero').innerHTML = hero.name;
+    heroesTemplate.content.getElementById('pv').innerHTML = hero.powerstats.durability;
+    heroesTemplate.content.getElementById('attack').innerHTML = hero.powerstats.strength;
+    heroesTemplate.content.getElementById('hero-img').src = hero.images.md;
+}
+
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
     if (inputText !== '') {
         suggestions.innerHTML = "";
         let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
 
-        testList.forEach(item => {
-            let newItem = document.createElement('button');
-            newItem.classList.add('js-suggestion', 'suggestions__itm');
-            newItem.setAttribute('id', item.id);
-            newItem.addEventListener('click', function () {
-                selectedHeroes.push(item);
-                heroesTemplate.content.getElementById('favourite-hero').innerHTML = item.name;
+        testList.forEach(hero => {
+            let newHero = document.createElement('button');
+            newHero.classList.add('js-suggestion', 'suggestions__itm');
+            newHero.setAttribute('id', hero.id);
+            newHero.addEventListener('click', function () {
+                selectedHeroes.push(hero);
+                fillHeroTemplate(hero)
                 let clone = document.importNode(heroesTemplate.content, true);
                 clone.querySelector('.button--minus').addEventListener('click', function (event) {
                     event.target.parentNode.remove();
                 });
                 selectedItemsList.appendChild(clone);
-                newItem.remove();
+                newHero.remove();
             });
-            const textItem = document.createTextNode(item.name);
-            newItem.appendChild(textItem);
-            suggestions.appendChild(newItem);
+            const textItem = document.createTextNode(hero.name);
+            newHero.appendChild(textItem);
+            suggestions.appendChild(newHero);
         });
     } else {
         suggestions.innerHTML = '';
