@@ -1,6 +1,6 @@
 let characters = [
     {
-       
+
         name: 'Chun-li',
         //powerstats.combat
         "powerstats": {
@@ -10,7 +10,7 @@ let characters = [
             "durability": 80,
             "power": 24,
             "combat": 64
-          },
+        },
     },
     {
         name: 'Ryu',
@@ -21,7 +21,7 @@ let characters = [
             "durability": 80,
             "power": 24,
             "combat": 64
-          },
+        },
     },
     {
         name: 'Ken',
@@ -32,7 +32,7 @@ let characters = [
             "durability": 80,
             "power": 24,
             "combat": 64
-          },
+        },
 
     },
     {
@@ -44,7 +44,7 @@ let characters = [
             "durability": 80,
             "power": 24,
             "combat": 64
-          },
+        },
 
     }
 ];
@@ -220,18 +220,18 @@ function startBattleRoyalInterval(characterArray) {
 
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
-        // console.log(fight(challengers));
+        console.log(fight(challengers));
         characterArray = burnTheDead(characterArray);
 
         if (characterArray.length === 1) {
             clearInterval(timer);
-            // console.table(characterArray[0]);
+            console.table(characterArray[0]);
         }
     }, 1000);
 }
 
-// startBattleRoyalInterval(Heroes);
-// console.table(startBattleRoyalInterval(characters));
+startBattleRoyalInterval(characters);
+console.table(startBattleRoyalInterval(characters));
 
 
 
