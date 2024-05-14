@@ -9,6 +9,11 @@ const suggestions = document.getElementById('suggestions');
 const allHeros = document.getElementById('all-heros')
 const heroesTemplate = document.getElementById("heroes-template");
 let selectedHeroes = [];
+<<<<<<< HEAD
+=======
+console.log(selectedHeroes);
+
+>>>>>>> da65abcbb01f048b6c01201484c407dc784bbca6
 /**
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.

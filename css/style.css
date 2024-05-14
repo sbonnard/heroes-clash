@@ -34,12 +34,24 @@ input {
           appearance: none;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* Variables */
 /* Colours */
 /* Primary coulours */
 /* Secondary coulours */
 /* Components */
 /* Header */
+.header {
+  width: 100%;
+  background-color: rgba(251, 246, 233, 0.5);
+}
+.header__logo {
+  width: 5.375rem;
+}
+
 /* Buttons */
 .button--minus {
   content: "";
@@ -61,4 +73,25 @@ input {
   cursor: pointer;
 }
 
-/* Card *//*# sourceMappingURL=style.css.map */
+/* Card */
+/* Utils */
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flex--horizontal {
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 20%;
+  background-image: url(/img/search.png);
+  background-size: cover;
+  background-position: left;
+}/*# sourceMappingURL=style.css.map */

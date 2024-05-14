@@ -1,1 +1,10 @@
 /* Header */
+
+.header {
+    width: 100%;
+    background-color: $cream50;
+
+    &__logo {
+        width: 5.375rem;
+    }
+}
