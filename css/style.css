@@ -44,6 +44,14 @@ body {
 /* Secondary coulours */
 /* Components */
 /* Header */
+.header {
+  width: 100%;
+  background-color: rgba(251, 246, 233, 0.5);
+}
+.header__logo {
+  width: 5.375rem;
+}
+
 /* Buttons */
 .button--minus {
   content: "";
