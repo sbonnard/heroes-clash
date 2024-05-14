@@ -4,6 +4,10 @@ const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const heroesTemplate = document.getElementById("heroes-template");
 const suggestions = document.getElementById('suggestions');
+const pv = document.getElementById('pv');
+const attack = document.getElementById('attack');
+const heroImg = document.getElementById('hero-img');
+const heroName = document.getElementById('favourite-hero');
 
 let selectedHeroes = [];
 
@@ -12,6 +16,7 @@ inputField.addEventListener('keyup', function (event) {
     if (inputText !== '') {
         suggestions.innerHTML = "";
         let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
+
         testList.forEach(item => {
             let newItem = document.createElement('button');
             newItem.classList.add('js-suggestion', 'suggestions__itm');
