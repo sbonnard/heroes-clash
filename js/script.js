@@ -1,35 +1,40 @@
-// let characters = [
-//     {
-//         name: 'Zangief',
-//         life: 50,
-//         xp: 7,
-//         weapon: 9,
-//         shield: 8,
-//     },
-//     {
-//         name: 'Chun-Li',
-//         life: 50,
-//         xp: 7,
-//         weapon: 8,
-//         shield: 8,
-//     },
-//     {
-//         name: 'Blanca',
-//         life: 50,
-//         xp: 4,
-//         weapon: 6,
-//         shield: 7,
-//     },
-//     {
-//         name: 'Ken',
-//         life: 1,
-//         xp: 4,
-//         weapon: 7,
-//         shield: 5,
-//     }
-// ];
-
 import Heroes from "/json/api-heroes.json" with {type: "json" }
+
+const inputField = document.getElementById('inputField');
+const selectedItemsList = document.getElementById('selectedItemsList');
+const template = document.getElementById("favourite-template");
+const suggestions = document.getElementById('suggestions');
+
+let selectedRPG = [];
+
+inputField.addEventListener('keyup', function (event) {
+    const inputText = inputField.value.trim();
+    if (inputText !== '') {
+        suggestions.innerHTML = "";
+        let testList = Heroes.filter(rpg => rpg.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
+        testList.forEach(item => {
+            let newItem = document.createElement('p');
+            newItem.classList.add('js-suggestion', 'suggestions__itm');
+            newItem.setAttribute('id', item.id);
+            newItem.addEventListener('click', function () {
+                selectedRPG.push(item);
+                template.content.getElementById('favourite-rpg').innerHTML = item.name;
+                let clone = document.importNode(template.content, true);
+                clone.querySelector('.button--minus').addEventListener('click', function (event) {
+                    event.target.parentNode.remove();
+                });
+                selectedItemsList.appendChild(clone);
+                newItem.remove();
+            });
+            const textItem = document.createTextNode(item.name);
+            newItem.appendChild(textItem);
+            suggestions.appendChild(newItem);
+        });
+    } else {
+        suggestions.innerHTML = '';
+    }
+});
+
 
 /**
  * Return a random value between 0 and a chosen number.

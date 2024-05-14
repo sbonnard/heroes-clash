@@ -16,14 +16,23 @@
 
     <main>
 
-
-
-
-
-
-
+        <li class="form__itm">
+            <label class="input__label" class="form__question" for="inputField">
+                Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
+            <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Mes héros"
+                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+            <div class="suggestions" id="suggestions"></div>
+            <ul id="selectedItemsList"></ul>
+        </li>
 
     </main>
+
+    <template id="favourite-template">
+        <li class="favourites">
+            <button class="button--minus" data-favourite-minus=""></button>
+            <p class="txt--bigger" id="favourite-rpg">Patate</p>
+        </li>
+    </template>
 
     <footer>
 
