@@ -1,57 +1,8 @@
-// let characters = [
-//     {
+import Heroes from "/json/api-heroes.json" with {type: "json" }
 
-//         name: 'Chun-li',
-//         //powerstats.combat
-//         "powerstats": {
-//             "intelligence": 38,
-//             "strength": 100,
-//             "speed": 17,
-//             "durability": 80,
-//             "power": 24,
-//             "combat": 64
-//         },
-//     },
-//     {
-//         name: 'Ryu',
-//         "powerstats": {
-//             "intelligence": 38,
-//             "strength": 100,
-//             "speed": 17,
-//             "durability": 80,
-//             "power": 24,
-//             "combat": 64
-//         },
-//     },
-//     {
-//         name: 'Ken',
-//         "powerstats": {
-//             "intelligence": 38,
-//             "strength": 100,
-//             "speed": 17,
-//             "durability": 80,
-//             "power": 24,
-//             "combat": 64
-//         },
-
-//     },
-//     {
-//         name: 'Zangief',
-//         "powerstats": {
-//             "intelligence": 38,
-//             "strength": 100,
-//             "speed": 17,
-//             "durability": 80,
-//             "power": 24,
-//             "combat": 64
-//         },
-
-//     }
-// ];
 
 const characters = []
 
-import Heroes from "/json/api-heroes.json" with {type: "json" }
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const suggestions = document.getElementById('suggestions');
@@ -61,9 +12,8 @@ const suggestions = document.getElementById('suggestions');
 // let heroName = document.querySelector('js-favourite-hero');
 const allHeros = document.getElementById('all-heros');
 const heroesTemplate = document.getElementById("heroes-template");
+let showFightResult = document.getElementById('show-fight-result');
 let selectedHeroes = [];
-console.log(selectedHeroes)
-const showFightResult = document.getElementById('show-fight-reslut');
 
 /**
  * Create a template and loads informations about the hero.
@@ -75,12 +25,13 @@ function fillHeroTemplate(hero) {
     //dataSet
     heroLi.dataset.intelligence = hero.powerstats.intelligence
     //reviewed to be deleted the two under
+    // heroLi.dataset.id = hero.id;
     heroLi.dataset.name = hero.name;
-    heroLi.dataset.durability = hero.powerstats.durability
-    heroLi.dataset.strength = hero.powerstats.strength
-    heroLi.dataset.speed = hero.powerstats.speed
-    heroLi.dataset.power = hero.powerstats.power
-    heroLi.dataset.combat = hero.powerstats.combat
+    // heroLi.dataset.durability = hero.powerstats.durability
+    // heroLi.dataset.strength = hero.powerstats.strength
+    // heroLi.dataset.speed = hero.powerstats.speed
+    // heroLi.dataset.power = hero.powerstats.power
+    // heroLi.dataset.combat = hero.powerstats.combat
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
@@ -234,6 +185,7 @@ function startBattleRoyalInterval(characterArray) {
         const challengers = getChallengers(characterArray);
         // console.log(fight(challengers));
         //show fight result
+        // showingResult(fight(challengers));
         showFightResult.innerText = fight(challengers)
         characterArray = burnTheDead(characterArray);
 
@@ -288,8 +240,9 @@ function handleClickHero(e) {
 
 function showSelectedHeros(heroes) {
     heroes.forEach(hero => {
-        const selectedUL = document.getElementById("SelectedHero");
+        const selectedUL = document.getElementById("Selected-hero");
         selectedUL.appendChild(hero);
+        console.log(hero)
         let character = constructHeroCharacter(hero)
         characters.push(character)
 
@@ -297,39 +250,48 @@ function showSelectedHeros(heroes) {
 }
 
 
-// name: 'Chun-li',
-// //powerstats.combat
-// "powerstats": {
-//     "intelligence": 38,
-//     "strength": 100,
-//     "speed": 17,
-//     "durability": 80,
-//     "power": 24,
-//     "combat": 64
-// },
-
 
 function constructHeroCharacter(hero) {
-    const character = { powerstats: {} }
-    character.name = hero.dataset.name;
-    character.powerstats.intelligence = hero.dataset.intelligence;
-    character.powerstats.strength = hero.dataset.strength;
-    character.powerstats.durability = hero.dataset.durability;
-    character.powerstats.power = hero.dataset.power;
-    character.powerstats.combat = hero.dataset.combat;
-
-    console.log(character)
-    return character
-
+    console.log(hero.dataset.name)
+    console.log(searchByheroName(hero.dataset.name))
+    return searchByheroName(hero.dataset.name)
 }
 
+function searchByheroName(heroName) {
+    if (heroName !== '') {
+        return Heroes.find(hero => {
+            return hero.name.includes(heroName);
+        });
+    }
+
+    return null;
+}
+
+console.log(searchByheroName("Abin Sur"))
+
+
 function startFight() {
-    if(characters===null){return}
-    startBattleRoyalInterval(characters);
-    console.table(startBattleRoyalInterval(characters));
+    if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
+
+    const showBattleTable = document.getElementById('show-fight-result');
+    showBattleTable.innerText = startBattleRoyalInterval(characters)
+
 }
 
 document.getElementById("start-fight").addEventListener("click", () => {
     startFight()
+    console.log(characters)
+
 })
 
+
+// function showingResult() {
+//     const showingResultTemplate = document.getElementById('fight-template');
+//     const clone = document.importNode(showingResultTemplate.content, true);
+//     clone.document.querySelector(".js-fight-txt")
+//     const showFightResult = document.getElementById('show-fight-reslut');
+//     showFightResult.appendChild(clone);
+
+// }
+
+// showingResult()
