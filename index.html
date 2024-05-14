@@ -16,16 +16,30 @@
 
     <main>
 
-        <ul>
-            <li class="form__itm">
+        <!-- showing all heros -->
+        <section class="container">
+            <h2>Sélection de Héros</h2>
+            <ul id="all-heros" class="flex flex--horizontal">
+            </ul>
+        </section>
+        <!-- end showing all heros -->
+
+        <!-- showing all heros -->
+
+        <section class="container">
+            <h2>Mes Héros</h2>
+
+            <div class="flex">
                 <label class="input__label" for="inputField">
-                    Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
+                    Choisis tes combattants en tapant <br>le nom de tes héros préférés ! </label>
                 <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
                     aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
                 <div class="suggestions" id="suggestions"></div>
-                <ul id="selectedItemsList"></ul>
-            </li>
-        </ul>
+                <ul class="flex flex--horizontal" id="selectedItemsList"></ul>
+            </div>
+        </section>
+
+
     </main>
 
     <template id="heroes-template">
@@ -41,11 +55,6 @@
 
 
 
-    <!-- showing all heros -->
-    <h2> all heros</h2>
-    <ul id="all-heros">
-    </ul>
-    <!-- end showing all heros -->
 
     <footer>
 

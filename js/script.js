@@ -12,6 +12,7 @@ const heroesTemplate = document.getElementById("heroes-template");
 
 
 let selectedHeroes = [];
+console.log(selectedHeroes);
 
 /**
  * Create a template and loads informations about the hero.

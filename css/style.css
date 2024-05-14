@@ -34,6 +34,10 @@ input {
           appearance: none;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* Variables */
 /* Colours */
 /* Primary coulours */
@@ -61,4 +65,15 @@ input {
   cursor: pointer;
 }
 
-/* Card *//*# sourceMappingURL=style.css.map */
+/* Card */
+/* Utils */
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flex--horizontal {
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 1rem;
+  padding: 1rem;
+}/*# sourceMappingURL=style.css.map */

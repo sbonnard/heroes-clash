@@ -1,0 +1,16 @@
+/* Utils */
+
+.container {
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+
+    &--horizontal{
+        flex-direction: row;
+        overflow-x: scroll;
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
