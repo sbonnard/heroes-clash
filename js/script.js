@@ -205,8 +205,7 @@ showNOfHeros(0, 10, Heroes)
 
 function listenToHeroes(targetClass) {
     const allheroes = document.querySelectorAll(targetClass)
-    console.log(typeof (allheroes));
-    console.log(allheroes);
+
     allheroes.forEach(hero => {
         hero.addEventListener("click", handleClickHero);
     });
@@ -217,5 +216,16 @@ function listenToHeroes(targetClass) {
 listenToHeroes('.js-hero-card')
 
 function handleClickHero(e) {
-    console.log(e)
+    // console.log(e.target.parentNode)
+    selectedHeroes.push(e.target.parentNode);
+    showSelectedHeros(selectedHeroes);
+
+}
+
+function showSelectedHeros(heroes) {
+    heroes.forEach(hero => {
+        const selectedUL = document.getElementById("SelectedHero");
+        selectedUL.appendChild(hero);
+
+    });
 }
