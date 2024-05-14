@@ -1,3 +1,56 @@
+let characters = [
+    {
+       
+        name: 'Chun-li',
+        //powerstats.combat
+        "powerstats": {
+            "intelligence": 38,
+            "strength": 100,
+            "speed": 17,
+            "durability": 80,
+            "power": 24,
+            "combat": 64
+          },
+    },
+    {
+        name: 'Ryu',
+        "powerstats": {
+            "intelligence": 38,
+            "strength": 100,
+            "speed": 17,
+            "durability": 80,
+            "power": 24,
+            "combat": 64
+          },
+    },
+    {
+        name: 'Ken',
+        "powerstats": {
+            "intelligence": 38,
+            "strength": 100,
+            "speed": 17,
+            "durability": 80,
+            "power": 24,
+            "combat": 64
+          },
+
+    },
+    {
+        name: 'Zangief',
+        "powerstats": {
+            "intelligence": 38,
+            "strength": 100,
+            "speed": 17,
+            "durability": 80,
+            "power": 24,
+            "combat": 64
+          },
+
+    }
+];
+
+
+
 import Heroes from "/json/api-heroes.json" with {type: "json" }
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
@@ -9,11 +62,7 @@ const suggestions = document.getElementById('suggestions');
 const allHeros = document.getElementById('all-heros')
 const heroesTemplate = document.getElementById("heroes-template");
 let selectedHeroes = [];
-<<<<<<< HEAD
-=======
-console.log(selectedHeroes);
 
->>>>>>> da65abcbb01f048b6c01201484c407dc784bbca6
 /**
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.
@@ -82,7 +131,7 @@ function getRandomArrayValue(array) {
  * @returns {number} - Random attack score
  */
 function getAttackScore(attacker) {
-    return getRandomValue(attacker.weapon) + attacker.xp;
+    return getRandomValue(attacker.powerstats.power) + attacker.powerstats.strength;
 }
 
 
@@ -92,7 +141,7 @@ function getAttackScore(attacker) {
  * @returns {number} - Random defense score
  */
 function getDefenseScore(defender) {
-    return getRandomValue(defender.shield) + defender.xp;
+    return getRandomValue(defender.powerstats.combat) + defender.powerstats.strength;
 }
 
 
@@ -116,7 +165,7 @@ function getChallengers(charactersList) {
 /**
  * fight between two characters and define the winner and the loser.
  * @param {array} challengers the first element in the array is the attacker and the second is the defender. they are objects. 
- * @returns {string} A text to explain the fight.
+ * @returns {string} A text to epowerstats.strengthlain the fight.
  */
 function fight(challengers) {
     const attacker = challengers[0];
@@ -126,7 +175,7 @@ function fight(challengers) {
 
     const attackPoints = getAttackScore(attacker);
     if (attackPoints > getDefenseScore(defender)) {
-        defender.life -= attackPoints;
+        defender.powerstats.durability -= attackPoints;
 
         txt += `${attacker.name} attaque ${defender.name} et a gagné le combat en lui infligeant ${attackPoints} points de dégats.`;
 
@@ -148,7 +197,7 @@ function fight(challengers) {
  * @returns {boolean} -True if alive, false if dead
  */
 function isAlive(character) {
-    return character.life > 0;
+    return character.powerstats.durability > 0;
 }
 
 
