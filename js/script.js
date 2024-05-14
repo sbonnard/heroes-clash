@@ -5,6 +5,7 @@ const selectedItemsList = document.getElementById('selectedItemsList');
 const template = document.getElementById("favourite-template");
 const suggestions = document.getElementById('suggestions');
 
+
 let selectedRPG = [];
 
 inputField.addEventListener('keyup', function (event) {
@@ -163,3 +164,26 @@ function startBattleRoyalInterval(characterArray) {
 
 // startBattleRoyalInterval(Heroes);
 // console.table(startBattleRoyalInterval(characters));
+
+
+
+
+
+//show heros
+
+function showHeros(data) {
+
+
+    const template = document.getElementById("show-hero-template");
+    const oneHero = document.importNode(template.content, true);
+    const heroCard = dayElement.querySelector(".js-hero-card");
+    heroCard.textContent = data;
+    // heroCard.dataset.day = day;
+    // heroCard.dataset.date = dataSet;
+    heroCard.setAttribute("datetime", currentDate);
+    if (isDayDisactive(dataSet, currentDate)) {
+        dayCell.classList.add("disactive");
+    }
+
+    daysContainer.appendChild(dayElement)
+}
