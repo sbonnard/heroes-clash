@@ -190,7 +190,9 @@ function startBattleRoyalInterval(characterArray) {
 
 function showHeros(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
+    console.log(clone)
     fillHeroTemplate(hero);
+    console.log(fillHeroTemplate(hero))
     allHeros.appendChild(clone);
 
 }
@@ -204,4 +206,4 @@ function showNOfHeros(start, end, data) {
 
 }
 
-showNOfHeros(0, 10, Heroes)
+showNOfHeros(3, 10, Heroes)
