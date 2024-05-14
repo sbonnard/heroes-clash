@@ -18,21 +18,23 @@
 
         <ul>
             <li class="form__itm">
-                <label class="input__label" class="form__question" for="inputField">
+                <label class="input__label" for="inputField">
                     Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
-                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Mes héros"
+                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
                     aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
                 <div class="suggestions" id="suggestions"></div>
                 <ul id="selectedItemsList"></ul>
             </li>
         </ul>
-        
     </main>
 
     <template id="heroes-template">
         <li class="favourites js-hero-card">
             <button class="button--minus" data-favourite-minus=""></button>
-            <p class="txt--bigger" id="favourite-hero">Patate</p>
+            <img id="hero-img" src="" alt="">
+            <h2 class="txt--bigger" id="favourite-hero">Patate</h2>
+            <p id="attack">25</p>
+            <p id="pv">25</p>
         </li>
     </template>
 

@@ -28,6 +28,12 @@ button {
   cursor: pointer;
 }
 
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 /* Variables */
 /* Colours */
 /* Primary coulours */
@@ -43,6 +49,11 @@ button {
 }
 
 .suggestions {
+<<<<<<< HEAD
+=======
+  display: flex;
+  flex-direction: column;
+>>>>>>> b5e6ceff2d5d4f3ab6f85707abe3227eeada6600
   z-index: 1;
   width: 20.5rem;
   background-color: white;
