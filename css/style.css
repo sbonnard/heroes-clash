@@ -48,12 +48,10 @@ input {
   background-color: black;
 }
 
+/* Suggestions List */
 .suggestions {
-<<<<<<< HEAD
-=======
   display: flex;
   flex-direction: column;
->>>>>>> b5e6ceff2d5d4f3ab6f85707abe3227eeada6600
   z-index: 1;
   width: 20.5rem;
   background-color: white;
@@ -61,4 +59,6 @@ input {
   border-right: 1px solid black;
   border-left: 1px solid black;
   cursor: pointer;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/* Card *//*# sourceMappingURL=style.css.map */
