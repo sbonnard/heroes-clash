@@ -8,6 +8,7 @@ const pv = document.getElementById('pv');
 const attack = document.getElementById('attack');
 const heroImg = document.getElementById('hero-img');
 const heroName = document.getElementById('favourite-hero');
+const allHeros = document.getElementById("all-heros")
 
 let selectedHeroes = [];
 
@@ -180,7 +181,8 @@ function showHeros(data) {
     // console.log(data);
     const oneHero = document.importNode(heroesTemplate.content, true);
     const heroCard = oneHero.querySelector(".js-hero-card");
-    heroCard.textContent = data.name;
+    heroName.textContent = data.name;
+    heroImg.src= data
     heroCard.dataset.day = data.name;
     // heroCard.dataset.date = dataSet;
     allHeros.appendChild(heroCard)
