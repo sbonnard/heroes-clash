@@ -181,21 +181,20 @@ function showHeros(data) {
     // console.log(data);
     const oneHero = document.importNode(heroesTemplate.content, true);
     const heroCard = oneHero.querySelector(".js-hero-card");
-    heroName.textContent = data.name;
-    heroImg.src= data
-    heroCard.dataset.day = data.name;
+    // heroName.textContent = data.name;
+    // heroImg.src = data
     // heroCard.dataset.date = dataSet;
-    allHeros.appendChild(heroCard)
+    allHeros.appendChild(heroName)
 
 }
 
-function showNOfHero(start, end, data) {
+function showNOfHeros(start, end, data) {
     for (start; start < end; start++) {
-        console.log(data[start])  
-        showHeros(data[start]) //
+        console.log(data[start])
+        showHeros(data[start])
     }
     return data[start]
 
 }
 
-showNOfHero(0, 10, Heroes)
+showNOfHeros(0, 10, Heroes)
