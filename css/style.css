@@ -43,17 +43,14 @@ input {
 /* Buttons */
 .button--minus {
   content: "";
-  width: 1rem;
-  height: 1rem;
+  width: 5rem;
+  height: 5rem;
   background-color: black;
 }
 
 .suggestions {
-<<<<<<< HEAD
-=======
   display: flex;
   flex-direction: column;
->>>>>>> b5e6ceff2d5d4f3ab6f85707abe3227eeada6600
   z-index: 1;
   width: 20.5rem;
   background-color: white;

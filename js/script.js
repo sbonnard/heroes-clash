@@ -24,6 +24,8 @@ function fillHeroTemplate(hero) {
     heroesTemplate.content.getElementById('hero-img').src = hero.images.md;
 }
 
+
+
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
     if (inputText !== '') {
@@ -37,6 +39,7 @@ inputField.addEventListener('keyup', function (event) {
             newHero.addEventListener('click', function () {
                 selectedHeroes.push(hero);
                 fillHeroTemplate(hero)
+
                 let clone = document.importNode(heroesTemplate.content, true);
                 clone.querySelector('.button--minus').addEventListener('click', function (event) {
                     event.target.parentNode.remove();
@@ -190,14 +193,14 @@ function startBattleRoyalInterval(characterArray) {
 
 function showHeros(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
-    console.log(clone)
     fillHeroTemplate(hero);
-    console.log(fillHeroTemplate(hero))
     allHeros.appendChild(clone);
 
 }
 
 function showNOfHeros(start, end, data) {
+    if (start < 0) { return 0 }
+    if (end > data.length()) { return data.length }
     for (start; start < end; start++) {
         console.log(data[start])
         showHeros(data[start])
@@ -207,3 +210,4 @@ function showNOfHeros(start, end, data) {
 }
 
 showNOfHeros(3, 10, Heroes)
+
