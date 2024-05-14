@@ -2,13 +2,13 @@ import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
-const heroesTemplate = document.getElementById("heroes-template");
 const suggestions = document.getElementById('suggestions');
-const pv = document.getElementById('pv');
-const attack = document.getElementById('attack');
-const heroImg = document.getElementById('hero-img');
-const heroName = document.getElementById('favourite-hero');
-const allHeros = document.getElementById("all-heros")
+// let pv = document.querySelector('js-pv');
+// let attack = document.querySelector('js-attack');
+// let heroImg = document.querySelector('js-hero-img');
+// let heroName = document.querySelector('js-favourite-hero');
+const allHeros = document.getElementById('all-heros')
+const heroesTemplate = document.getElementById("heroes-template");
 
 
 let selectedHeroes = [];
@@ -16,12 +16,15 @@ let selectedHeroes = [];
 /**
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.
- */
+*/
 function fillHeroTemplate(hero) {
-    heroesTemplate.content.getElementById('favourite-hero').innerHTML = hero.name;
-    heroesTemplate.content.getElementById('pv').innerHTML = hero.powerstats.durability;
-    heroesTemplate.content.getElementById('attack').innerHTML = hero.powerstats.strength;
-    heroesTemplate.content.getElementById('hero-img').src = hero.images.md;
+    let clone = document.importNode(heroesTemplate.content, true);
+    console.log(clone.querySelector('.js-favourite-hero'));
+    clone.querySelector('.js-favourite-hero').innerText = hero.name;
+    clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-hero-img').src = hero.images.md;
+    return clone
 }
 
 function createRemoveBtn() {
@@ -40,8 +43,7 @@ inputField.addEventListener('keyup', function (event) {
             newHero.setAttribute('id', hero.id);
             newHero.addEventListener('click', function () {
                 selectedHeroes.push(hero);
-                fillHeroTemplate(hero)
-                let clone = document.importNode(heroesTemplate.content, true);
+                let clone = fillHeroTemplate(hero);
                 clone.querySelector('.button--minus').addEventListener('click', function (event) {
                     event.target.parentNode.remove();
                 });
@@ -173,12 +175,12 @@ function startBattleRoyalInterval(characterArray) {
 
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
-        console.log(fight(challengers));
+        // console.log(fight(challengers));
         characterArray = burnTheDead(characterArray);
 
         if (characterArray.length === 1) {
             clearInterval(timer);
-            console.table(characterArray[0]);
+            // console.table(characterArray[0]);
         }
     }, 1000);
 }
@@ -193,15 +195,13 @@ function startBattleRoyalInterval(characterArray) {
 //show heros
 
 function showHeros(hero) {
-    let clone = document.importNode(heroesTemplate.content, true);
-    fillHeroTemplate(hero);
+    let clone = fillHeroTemplate(hero);
     allHeros.appendChild(clone);
 
 }
 
 function showNOfHeros(start, end, data) {
     for (start; start < end; start++) {
-        console.log(data[start])
         showHeros(data[start])
     }
     return data[start]
