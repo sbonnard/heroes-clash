@@ -24,6 +24,10 @@ function fillHeroTemplate(hero) {
     heroesTemplate.content.getElementById('hero-img').src = hero.images.md;
 }
 
+function createRemoveBtn() {
+    heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
+}
+
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
     if (inputText !== '') {
