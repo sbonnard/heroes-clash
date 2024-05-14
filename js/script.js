@@ -15,7 +15,6 @@ let selectedHeroes = [];
 */
 function fillHeroTemplate(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
-    console.log(clone.querySelector('.js-favourite-hero'));
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
@@ -193,6 +192,8 @@ function showHeros(hero) {
 }
 
 function showNOfHeros(start, end, data) {
+    if (start < 0) { start = 0; }
+    if (end > Heroes.length) { end = Heroes.length }
     for (start; start < end; start++) {
         showHeros(data[start])
     }
@@ -200,4 +201,21 @@ function showNOfHeros(start, end, data) {
 
 }
 
-showNOfHeros(3, 10, Heroes)
+showNOfHeros(0, 10, Heroes)
+
+function listenToHeroes(targetClass) {
+    const allheroes = document.querySelectorAll(targetClass)
+    console.log(typeof (allheroes));
+    console.log(allheroes);
+    allheroes.forEach(hero => {
+        hero.addEventListener("click", handleClickHero);
+    });
+
+}
+
+
+listenToHeroes('.js-hero-card')
+
+function handleClickHero(e) {
+    console.log(e)
+}
