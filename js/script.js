@@ -315,7 +315,6 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
     const templateName = document.getElementById(templateId);
     let clone = document.importNode(templateName.content, true);
     const target = document.getElementById(targetId);
-    console.log(clone)
     clone.querySelector('.js-name').innerText = hero.name;
     clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
     clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
