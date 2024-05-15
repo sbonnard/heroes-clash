@@ -36,6 +36,7 @@ input {
 
 body {
   overflow-x: hidden;
+  background-image: url(/img/background-dark.png);
   font-family: "oswald";
 }
 
@@ -89,6 +90,11 @@ body {
 
 /* Card */
 /* Utils */
+.container {
+  margin: 1.75rem;
+  border-radius: 2rem;
+}
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -110,18 +116,102 @@ body {
   background-position: left;
 }
 
+.background {
+  background-color: rgba(251, 246, 233, 0.5);
+}
+
 /* Hero */
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-transform: uppercase;
+  align-items: center;
   color: #FBF5E8;
+  background-image: url(/img/atk-icon-full-size.png);
 }
 .hero__frame {
   width: 50%;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 }
 .hero__name {
   position: relative;
+  font-size: 1.125rem;
+  z-index: 100;
+  bottom: 3.5rem;
+}
+.hero__attack {
+  position: relative;
+  font-size: 1.625rem;
+  z-index: 10;
+  bottom: 12.5rem;
+  left: -3.75rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+}
+.hero__pv {
+  font-size: 2.125rem;
+  position: relative;
+  z-index: 10;
+  bottom: 3.6rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+}
+.hero__img {
+  position: relative;
+  width: 50%;
+}
+
+.sectionheader {
+  border-radius: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1rem;
+  font-family: oswald;
+  color: #FBF5E8;
+  font-size: 1.2rem;
+}
+.sectionheader--blue {
+  background-color: #169CF8;
+}
+.sectionheader--red {
+  background-color: #D11112;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-transform: uppercase;
+  align-items: center;
+  color: #FBF5E8;
+  background-image: url(/img/atk-icon-full-size.png);
+}
+.hero__frame {
+  width: 50%;
+  position: absolute;
+  z-index: 10;
+}
+.hero__name {
+  position: relative;
+  font-size: 1.125rem;
+  z-index: 100;
+  bottom: 3.5rem;
+}
+.hero__attack {
+  position: relative;
+  font-size: 1.625rem;
+  z-index: 10;
+  bottom: 12.5rem;
+  left: -3.75rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+}
+.hero__pv {
+  font-size: 2.125rem;
+  position: relative;
+  z-index: 10;
+  bottom: 3.6rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
 }
 .hero__img {
   position: relative;
