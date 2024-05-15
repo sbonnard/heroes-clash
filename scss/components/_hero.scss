@@ -7,42 +7,46 @@
     text-transform: uppercase;
     align-items: center;
     color: $cream;
+    position: relative;
 
     &__frame {
         width: 50%;
-        position: absolute;
         z-index: 10;
-
     }
 
     &__name {
-        position: relative;
+        position: absolute;
         font-size: 1.125rem;
         z-index: 100;
-        bottom: 4.5rem;
+        bottom: 30%;
     }
 
     &__attack {
-        position: relative;
-        font-size: 1.625rem;
+        position: absolute;
+        font-size: 1.25rem;
         z-index: 10;
-        bottom: 13.5rem;
-        left: -3.75rem;
+        top: 12%;
+        left: 31%;
         text-shadow: 0 3px $black50;
+        width: 30px;
+        text-align: center;
     }
 
     &__pv {
-        font-size: 2.125rem;
-        position: relative;
+        font-size: 1.875rem;
+        position: absolute;
         z-index: 10;
-        bottom: 4.60rem;
+        bottom: 7%;
         text-shadow: 0 3px $black50;
+        width: 50px;
+        text-align: center;
+        background-image: url(/img/health-bar.svg);
     }
 
     &__img {
-        position: relative;
-        width: 56%;
-        top: 3.75rem;
+        position: absolute;
+        width: 50%;
+        top: 0%;
         mask-image: url(/img/mask.svg);
         mask-repeat: no-repeat;
     }
