@@ -123,6 +123,10 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
+    // showingHeroCard(hero, altImg, templateId, showId)
+    console.log(attacker)
+    showingHeroCard(attacker, "attacker", "fight-template", "attacker")
+    showingHeroCard(defender, "defender", "fight-template", "defender")
 
     let txt = '';
 
@@ -173,9 +177,6 @@ function startBattleRoyalInterval(characterArray) {
 
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
-        // console.log(fight(challengers));
-        //show fight result
-        // showingResult(fight(challengers));
         showFightResult.innerText = fight(challengers)
         characterArray = burnTheDead(characterArray);
 
@@ -247,8 +248,7 @@ function handleClickHero(e) {
  */
 function showSelectedHeros(heroes) {
     heroes.forEach(hero => {
-        const selectedUL = document.getElementById("Selected-hero");
-        selectedUL.appendChild(hero);
+        selectedItemsList.appendChild(hero);
         let character = searchByheroName(hero.dataset.name)
         characters.push(character)
 
@@ -304,13 +304,36 @@ document.getElementById("start-fight").addEventListener("click", () => {
 
 
 
-// function showingResult() {
-//     const showingResultTemplate = document.getElementById('fight-template');
-//     const clone = document.importNode(showingResultTemplate.content, true);
-//     clone.document.querySelector(".js-fight-txt")
-//     const showFightResult = document.getElementById('show-fight-reslut');
-//     showFightResult.appendChild(clone);
+/**
+ * show an hero by inject a html template in target html
+ * @param {object} hero object of heros has properties like name, strenght,..
+ * @param {text} altImg alt image of the element
+ * @param {text} templateId template id in text format
+ * @param {text} targetId target id in in text format
+ */
+function showingHeroCard(hero, altImg, templateId, targetId) {
+    const templateName = document.getElementById(templateId);
+    let clone = document.importNode(templateName.content, true);
+    const target = document.getElementById(targetId);
+    console.log(clone)
+    clone.querySelector('.js-name').innerText = hero.name;
+    clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-combat').innerTextt = hero.combat;
+    clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
+    clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
+    // clone.querySelector('.js-img').src = hero.images.md;
+    // clone.querySelector('.js-img').alt = altImg;
+    target.appendChild(clone);
+}
 
-// }
 
-// showingResult()
+
+selectedItemsList.addEventListener("click", handleClickedSelected)
+
+function handleClickedSelected(e) {
+    console.log(e.target.parentNode);
+    allHeros.appendChild(e.target.parentNode);
+    e.target.parentNode.remove()
+
+}
