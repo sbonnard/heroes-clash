@@ -23,7 +23,8 @@
             <label class="input__label" for="inputField" id="inputFieldLabel">
                 <h1>Choisis tes Héros</h1>
             </label>
-            <input class="input" type="text" id="inputField" name="inputField" aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+            <input class="input" type="text" id="inputField" name="inputField"
+                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
             <div class="suggestions" id="suggestions"></div>
         </section>
 
@@ -44,14 +45,15 @@
             </div>
 
             <ul id="all-heros" class="flex flex--horizontal"></ul>
-            
+            <h2 class="ttl">Sélection de Héros</h2>
+            <ul id="all-heros" class="flex">
+            </ul>
         </section>
 
         <!-- ? ============================= -->
         <!-- ! Suggestions aléatoires des Héros -->
         <!-- ? ============================= -->
 
-        
 
         <!-- ? ============================= -->
         <!-- ! DECK -->
@@ -60,19 +62,22 @@
         <section class="container background">
 
             <div class="sectionheader sectionheader--red">
-                <h2>Votre Deck</h2>
+                <h2 class="ttl">Votre Deck</h2>
             </div>
-            
+
             <div class="flex">
                 <ul class="flex flex--horizontal" id="selectedItemsList"></ul>
             </div>
             <ul id="Selected-hero"> </ul>
         </section>
-        
+
         <!-- ? ============================= -->
         <!-- ! DECK -->
         <!-- ? ============================= -->
 
+        <div>-----------------------------------------------------</div>
+        <!-- showing all heros -->
+        <h2 class="ttl"> all heros</h2>
         <ul id="all-heros">
         </ul>
         <button class="start-fight" aria-label="start fight" type="button" id="start-fight">Start Fight</button>
@@ -84,8 +89,9 @@
 
     <template id="heroes-template">
         <li class="js-hero-card hero">
-            <button class="button--minus" data-favourite-minus=""></button>
-            <img class="js-hero-img" src="" alt="">
+            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+            <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+            <img class="js-hero-img hero__img" src="" alt="">
             <h2 class="js-favourite-hero hero__name">Patate</h2>
             <p class="js-attack">25</p>
             <p class="js-pv">25</p>

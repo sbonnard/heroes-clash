@@ -1,11 +1,23 @@
 /* Hero */
 
 .hero {
-    font-family: 'oswald';
     text-transform: uppercase;
     color: $cream;
 
+    &__frame {
+        width: 50%;
+        position: absolute;
+        z-index: 1;
+
+    }
+
     &__name {
-        background-color: rgba(0, 0, 0, 0.5);
+        position: relative;
+    }
+
+    &__img {
+        position: relative;
+        width: 50%;
+        // mask-image: url(/img/card-mask.png);
     }
 }

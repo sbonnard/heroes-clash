@@ -28,7 +28,10 @@ input {
     appearance: none;
 }
 
-body{
+body {
     overflow-x: hidden;
     background-image: url(/img/background-dark.png);
+    font-family: 'oswald';
+    // background-image: url(/img/background-dark.png);
+    // background-repeat: no-repeat;
 }

@@ -1,0 +1,133 @@
+/* Root */
+:root {
+  font-size: 16px;
+}
+
+/* RESET  */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+body {
+  overflow-x: hidden;
+  font-family: "oswald";
+}
+
+/* Variables */
+/* Colours */
+/* Primary coulours */
+/* Secondary coulours */
+/* Fonts */
+@font-face {
+  font-family: "oswald";
+  src: url(/fonts/oswald-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Components */
+/* Header */
+.header {
+  width: 100%;
+  background-color: rgba(251, 246, 233, 0.5);
+}
+.header__logo {
+  width: 5.375rem;
+}
+
+/* Buttons */
+.button--minus {
+  content: "";
+  width: 5rem;
+  height: 5rem;
+  background-color: black;
+}
+
+.start-fight {
+  width: 25%;
+  height: 5rem;
+  background-color: red;
+}
+
+/* Suggestions List */
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  width: 20.5rem;
+  background-color: white;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  cursor: pointer;
+}
+
+/* Card */
+/* Utils */
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flex--horizontal {
+  flex-direction: row;
+  overflow-x: scroll;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Input */
+.input {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: 20%;
+  background-image: url(/img/search.png);
+  background-size: cover;
+  background-position: left;
+}
+
+/* Hero */
+.hero {
+  text-transform: uppercase;
+  color: #FBF5E8;
+}
+.hero__frame {
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+}
+.hero__name {
+  position: relative;
+}
+.hero__img {
+  position: relative;
+  width: 50%;
+}
+
+.ttl {
+  color: #FBF5E8;
+}/*# sourceMappingURL=style.css.map */
