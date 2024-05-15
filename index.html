@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/heroes-clash.ico.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="header">
         <img class="header__logo" src="img/principal.webp" alt="">
     </header>
     <main>
+<<<<<<< HEAD
+=======
+        <h2> Selected Player</h2>
+        <ul id="SelectedHero"> </ul>
+        <!-- <ul>
+            <li class="form__itm">
+                <label class="input__label" for="inputField">
+                    Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
+                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
+                    aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+                <div class="suggestions" id="suggestions"></div>
+                <ul id="selectedItemsList"></ul>
+            </li>
+        </ul> -->
+>>>>>>> listenToCard
 
         <section aria-labelledby="inputFieldLabel flex">
             <h2>Choisis tes Héros</h2>
@@ -42,6 +59,7 @@
         </section>
 
 
+<<<<<<< HEAD
         <h2> Selected Player</h2>
         <ul id="SelectedHero"> </ul>
         <ul>
@@ -54,6 +72,8 @@
                 <ul id="selectedItemsList"></ul>
             </li>
         </ul>
+=======
+>>>>>>> listenToCard
     </main>
     <template id="heroes-template">
         <li class="favourites js-hero-card">
@@ -66,11 +86,24 @@
     </template>
 
 
+    <ul id="Selected-hero"> </ul>
 
-<div>-----------------------------------------------------</div>
-
+    <div>-----------------------------------------------------</div>
+    <!-- showing all heros -->
+    <h2> all heros</h2>
+    <ul id="all-heros">
+    </ul>
+    <!-- end showing all heros -->
+    <!-- showing results -->
+    <button class="start-fight" aria-label="start fight" type="button" id="start-fight">Start Fight</button>
+    <ol id="show-fight-result"></ol>
+    <p id="show-fight-table"></p>
+    <!-- <template id="fight-template">
+        <li class="js-fight-element">
+            <p class="js-fight-txt"></p>
+        </li>
+    </template> -->
     <footer>
-
     </footer>
 
     <script type="module" src="js/script.js"></script>

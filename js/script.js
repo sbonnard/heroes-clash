@@ -1,18 +1,25 @@
 import Heroes from "/json/api-heroes.json" with {type: "json" }
 
+<<<<<<< HEAD
+=======
+
+const characters = []
+
+>>>>>>> listenToCard
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const suggestions = document.getElementById('suggestions');
-// let pv = document.querySelector('js-pv');
-// let attack = document.querySelector('js-attack');
-// let heroImg = document.querySelector('js-hero-img');
-// let heroName = document.querySelector('js-favourite-hero');
-const allHeros = document.getElementById('all-heros')
+const allHeros = document.getElementById('all-heros');
 const heroesTemplate = document.getElementById("heroes-template");
+<<<<<<< HEAD
 
 
 let selectedHeroes = [];
 console.log(selectedHeroes);
+=======
+let showFightResult = document.getElementById('show-fight-result');
+let selectedHeroes = [];
+>>>>>>> listenToCard
 
 /**
  * Create a template and loads informations about the hero.
@@ -20,7 +27,7 @@ console.log(selectedHeroes);
 */
 function fillHeroTemplate(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
-    console.log(clone.querySelector('.js-favourite-hero'));
+    clone.querySelector('.js-hero-card').dataset.name = hero.name;
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
@@ -87,7 +94,7 @@ function getRandomArrayValue(array) {
  * @returns {number} - Random attack score
  */
 function getAttackScore(attacker) {
-    return getRandomValue(attacker.weapon) + attacker.xp;
+    return getRandomValue(attacker.powerstats.power) + attacker.powerstats.strength;
 }
 
 
@@ -97,7 +104,7 @@ function getAttackScore(attacker) {
  * @returns {number} - Random defense score
  */
 function getDefenseScore(defender) {
-    return getRandomValue(defender.shield) + defender.xp;
+    return getRandomValue(defender.powerstats.combat) + defender.powerstats.strength;
 }
 
 
@@ -121,7 +128,7 @@ function getChallengers(charactersList) {
 /**
  * fight between two characters and define the winner and the loser.
  * @param {array} challengers the first element in the array is the attacker and the second is the defender. they are objects. 
- * @returns {string} A text to explain the fight.
+ * @returns {string} A text to epowerstats.strengthlain the fight.
  */
 function fight(challengers) {
     const attacker = challengers[0];
@@ -131,7 +138,7 @@ function fight(challengers) {
 
     const attackPoints = getAttackScore(attacker);
     if (attackPoints > getDefenseScore(defender)) {
-        defender.life -= attackPoints;
+        defender.powerstats.durability -= attackPoints;
 
         txt += `${attacker.name} attaque ${defender.name} et a gagné le combat en lui infligeant ${attackPoints} points de dégats.`;
 
@@ -153,7 +160,7 @@ function fight(challengers) {
  * @returns {boolean} -True if alive, false if dead
  */
 function isAlive(character) {
-    return character.life > 0;
+    return character.powerstats.durability > 0;
 }
 
 
@@ -177,17 +184,17 @@ function startBattleRoyalInterval(characterArray) {
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
         // console.log(fight(challengers));
+        //show fight result
+        // showingResult(fight(challengers));
+        showFightResult.innerText = fight(challengers)
         characterArray = burnTheDead(characterArray);
 
         if (characterArray.length === 1) {
             clearInterval(timer);
-            // console.table(characterArray[0]);
+            console.table(characterArray[0]);
         }
     }, 1000);
 }
-
-// startBattleRoyalInterval(Heroes);
-// console.table(startBattleRoyalInterval(characters));
 
 
 
@@ -202,6 +209,8 @@ function showHeros(hero) {
 }
 
 function showNOfHeros(start, end, data) {
+    if (start < 0) { start = 0; }
+    if (end > Heroes.length) { end = Heroes.length }
     for (start; start < end; start++) {
         showHeros(data[start])
     }
@@ -210,3 +219,79 @@ function showNOfHeros(start, end, data) {
 }
 
 showNOfHeros(0, 10, Heroes)
+
+function listenToHeroes(targetClass) {
+    const allheroes = document.querySelectorAll(targetClass)
+
+    allheroes.forEach(hero => {
+        hero.addEventListener("click", handleClickHero);
+    });
+
+}
+
+
+listenToHeroes('.js-hero-card')
+
+function handleClickHero(e) {
+    selectedHeroes.push(e.target.parentNode);
+    showSelectedHeros(selectedHeroes);
+
+}
+
+function showSelectedHeros(heroes) {
+    heroes.forEach(hero => {
+        const selectedUL = document.getElementById("Selected-hero");
+        selectedUL.appendChild(hero);
+        console.log(hero)
+        let character = constructHeroCharacter(hero)
+        characters.push(character)
+
+    });
+}
+
+
+
+function constructHeroCharacter(hero) {
+    console.log(hero.dataset.name)
+    console.log(searchByheroName(hero.dataset.name))
+    return searchByheroName(hero.dataset.name)
+}
+
+function searchByheroName(heroName) {
+    if (heroName !== '') {
+        return Heroes.find(hero => {
+            return hero.name.includes(heroName);
+        });
+    }
+
+    return null;
+}
+
+console.log(searchByheroName("Abin Sur"))
+
+
+function startFight() {
+    if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
+
+    const showBattleTable = document.getElementById('show-fight-result');
+    showBattleTable.innerText = startBattleRoyalInterval(characters)
+
+}
+
+document.getElementById("start-fight").addEventListener("click", () => {
+    startFight()
+    console.log(characters)
+
+})
+
+
+// function showingResult() {
+//     const showingResultTemplate = document.getElementById('fight-template');
+//     const clone = document.importNode(showingResultTemplate.content, true);
+//     clone.document.querySelector(".js-fight-txt")
+//     const showFightResult = document.getElementById('show-fight-reslut');
+//     showFightResult.appendChild(clone);
+
+// }
+
+// showingResult()
