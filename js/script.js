@@ -123,10 +123,10 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
-    // showingHerofightCard(hero, altImg, templateId, showId)
+    // showingHeroCard(hero, altImg, templateId, showId)
     console.log(attacker)
-    showingHerofightCard(attacker, "attacker","fight-template","attacker" )
-    showingHerofightCard(defender, "defender","fight-template","defender")
+    showingHeroCard(attacker, "attacker", "fight-template", "attacker")
+    showingHeroCard(defender, "defender", "fight-template", "defender")
 
     let txt = '';
 
@@ -305,12 +305,17 @@ document.getElementById("start-fight").addEventListener("click", () => {
 
 
 
-// const attacker = document.getElementById(attacker);
-
-function showingHerofightCard(hero, altImg, templateId, showId) {
+/**
+ * show an hero by inject a html template in target html
+ * @param {object} hero object of heros has properties like name, strenght,..
+ * @param {text} altImg alt image of the element
+ * @param {text} templateId template id in text format
+ * @param {text} targetId target id in in text format
+ */
+function showingHeroCard(hero, altImg, templateId, targetId) {
     const templateName = document.getElementById(templateId);
     let clone = document.importNode(templateName.content, true);
-    const show = document.getElementById(showId);
+    const target = document.getElementById(targetId);
     console.log(clone)
     clone.querySelector('.js-name').innerText = hero.name;
     clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
@@ -320,21 +325,10 @@ function showingHerofightCard(hero, altImg, templateId, showId) {
     clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
     // clone.querySelector('.js-img').src = hero.images.md;
     // clone.querySelector('.js-img').alt = altImg;
-    show.appendChild(clone);
+    target.appendChild(clone);
 }
 
 
 
-  
 
-// function showingResult() {
-//     const showingResultTemplate = document.getElementById('fight-template');
-//     const clone = document.importNode(showingResultTemplate.content, true);
-//     clone.document.querySelector(".js-fight-txt")
-//     const showFightResult = document.getElementById('show-fight-reslut');
-//     showFightResult.appendChild(clone);
-
-// }
-
-// showingResult()
 
