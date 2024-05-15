@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heroes-Clash</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="scss/style.scss">
     <link rel="shortcut icon" href="img/heroes-clash.ico.ico" type="image/x-icon">
 </head>
 
@@ -23,8 +23,8 @@
 
         <!-- showing all heros -->
         <section class="container">
-            <h2>Sélection de Héros</h2>
-            <ul id="all-heros" class="flex flex--horizontal">
+            <h2 class="ttl">Sélection de Héros</h2>
+            <ul id="all-heros" class="flex">
             </ul>
         </section>
         <!-- end showing all heros -->
@@ -32,7 +32,7 @@
         <!-- showing all heros -->
 
         <section class="container">
-            <h2>Votre Deck</h2>
+            <h2 class="ttl">Votre Deck</h2>
 
             <div class="flex">
 
@@ -43,7 +43,7 @@
 
         <div>-----------------------------------------------------</div>
         <!-- showing all heros -->
-        <h2> all heros</h2>
+        <h2 class="ttl"> all heros</h2>
         <ul id="all-heros">
         </ul>
         <!-- end showing all heros -->
@@ -55,8 +55,9 @@
     </main>
     <template id="heroes-template">
         <li class="js-hero-card hero">
-            <button class="button--minus" data-favourite-minus=""></button>
-            <img class="js-hero-img" src="" alt="">
+            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+            <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+            <img class="js-hero-img hero__img" src="" alt="">
             <h2 class="js-favourite-hero hero__name">Patate</h2>
             <p class="js-attack">25</p>
             <p class="js-pv">25</p>
