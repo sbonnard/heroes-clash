@@ -1,25 +1,15 @@
 import Heroes from "/json/api-heroes.json" with {type: "json" }
 
-<<<<<<< HEAD
-=======
 
 const characters = []
 
->>>>>>> listenToCard
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const suggestions = document.getElementById('suggestions');
 const allHeros = document.getElementById('all-heros');
 const heroesTemplate = document.getElementById("heroes-template");
-<<<<<<< HEAD
-
-
-let selectedHeroes = [];
-console.log(selectedHeroes);
-=======
 let showFightResult = document.getElementById('show-fight-result');
 let selectedHeroes = [];
->>>>>>> listenToCard
 
 /**
  * Create a template and loads informations about the hero.
