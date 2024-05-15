@@ -123,8 +123,10 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
-    showingHerofightCard(attacker , "attacker")
-    showingHerofightCard(defender , "defender")
+    // showingHerofightCard(hero, altImg, templateId, showId)
+    console.log(attacker)
+    showingHerofightCard(attacker, "attacker","fight-template","attacker" )
+    showingHerofightCard(defender, "defender","fight-template","defender")
 
     let txt = '';
 
@@ -303,33 +305,27 @@ document.getElementById("start-fight").addEventListener("click", () => {
 
 
 
-function showingHerofightCard(hero,templateName, altImg) {
-    let clone = document.importNode(heroesTemplate.content, true);
-    clone.querySelector('.js-name').dataset.name = hero.name;
+// const attacker = document.getElementById(attacker);
+
+function showingHerofightCard(hero, altImg, templateId, showId) {
+    const templateName = document.getElementById(templateId);
+    let clone = document.importNode(templateName.content, true);
+    const show = document.getElementById(showId);
+    console.log(clone)
+    clone.querySelector('.js-name').innerText = hero.name;
     clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
     clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-combat').dataset.combat = hero.combat;
+    clone.querySelector('.js-combat').innerTextt = hero.combat;
     clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
     clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
-    clone.querySelector('.js-img').src = hero.images.md;
-    clone.querySelector('.js-img').alt = altImg;
-    return clone
+    // clone.querySelector('.js-img').src = hero.images.md;
+    // clone.querySelector('.js-img').alt = altImg;
+    show.appendChild(clone);
 }
 
 
 
-function fillHeroTemplate(hero) {
-    let clone = document.importNode(heroesTemplate.content, true);
-    clone.querySelector('.js-hero-card').dataset.name = hero.name;
-    clone.querySelector('.js-favourite-hero').innerText = hero.name;
-    clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
-    clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-hero-img').src = hero.images.md;
-    return clone
-}
-
-
-
+  
 
 // function showingResult() {
 //     const showingResultTemplate = document.getElementById('fight-template');
