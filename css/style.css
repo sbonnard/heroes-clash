@@ -36,6 +36,7 @@ input {
 
 body {
   overflow-x: hidden;
+  background-image: url(/img/background-dark.png);
   font-family: "oswald";
 }
 
@@ -89,6 +90,11 @@ body {
 
 /* Card */
 /* Utils */
+.container {
+  margin: 1.75rem;
+  border-radius: 2rem;
+}
+
 .flex {
   display: flex;
   flex-direction: column;
@@ -108,6 +114,44 @@ body {
   background-image: url(/img/search.png);
   background-size: cover;
   background-position: left;
+}
+
+.background {
+  background-color: rgba(251, 246, 233, 0.5);
+}
+
+/* Hero */
+.hero {
+  text-transform: uppercase;
+  color: #FBF5E8;
+}
+.hero__frame {
+  width: 50%;
+  position: absolute;
+  z-index: 1;
+}
+.hero__name {
+  position: relative;
+}
+.hero__img {
+  position: relative;
+  width: 50%;
+}
+
+.sectionheader {
+  border-radius: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0.8rem;
+  padding-left: 1rem;
+  font-family: oswald;
+  color: #FBF5E8;
+  font-size: 1.2rem;
+}
+.sectionheader--blue {
+  background-color: #169CF8;
+}
+.sectionheader--red {
+  background-color: #D11112;
 }
 
 /* Hero */
