@@ -248,7 +248,6 @@ function handleClickHero(e) {
  */
 function showSelectedHeros(heroes) {
     heroes.forEach(hero => {
-        // const selectedUL = document.getElementById("Selected-hero");
         selectedItemsList.appendChild(hero);
         let character = searchByheroName(hero.dataset.name)
         characters.push(character)
@@ -333,5 +332,8 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
 selectedItemsList.addEventListener("click", handleClickedSelected)
 
 function handleClickedSelected(e) {
-    console.log(e.target)
+    console.log(e.target.parentNode);
+    allHeros.appendChild(e.target.parentNode);
+    e.target.parentNode.remove()
+
 }
