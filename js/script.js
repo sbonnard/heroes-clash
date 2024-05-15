@@ -123,6 +123,8 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
+    showingHerofightCard(attacker , "attacker")
+    showingHerofightCard(defender , "defender")
 
     let txt = '';
 
@@ -173,9 +175,6 @@ function startBattleRoyalInterval(characterArray) {
 
     const timer = setInterval(() => {
         const challengers = getChallengers(characterArray);
-        // console.log(fight(challengers));
-        //show fight result
-        // showingResult(fight(challengers));
         showFightResult.innerText = fight(challengers)
         characterArray = burnTheDead(characterArray);
 
@@ -304,6 +303,34 @@ document.getElementById("start-fight").addEventListener("click", () => {
 
 
 
+function showingHerofightCard(hero,templateName, altImg) {
+    let clone = document.importNode(heroesTemplate.content, true);
+    clone.querySelector('.js-name').dataset.name = hero.name;
+    clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-combat').dataset.combat = hero.combat;
+    clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
+    clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
+    clone.querySelector('.js-img').src = hero.images.md;
+    clone.querySelector('.js-img').alt = altImg;
+    return clone
+}
+
+
+
+function fillHeroTemplate(hero) {
+    let clone = document.importNode(heroesTemplate.content, true);
+    clone.querySelector('.js-hero-card').dataset.name = hero.name;
+    clone.querySelector('.js-favourite-hero').innerText = hero.name;
+    clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-hero-img').src = hero.images.md;
+    return clone
+}
+
+
+
+
 // function showingResult() {
 //     const showingResultTemplate = document.getElementById('fight-template');
 //     const clone = document.importNode(showingResultTemplate.content, true);
@@ -314,3 +341,4 @@ document.getElementById("start-fight").addEventListener("click", () => {
 // }
 
 // showingResult()
+
