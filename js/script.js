@@ -6,10 +6,6 @@ const characters = []
 const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 const suggestions = document.getElementById('suggestions');
-// let pv = document.querySelector('js-pv');
-// let attack = document.querySelector('js-attack');
-// let heroImg = document.querySelector('js-hero-img');
-// let heroName = document.querySelector('js-favourite-hero');
 const allHeros = document.getElementById('all-heros');
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
@@ -21,17 +17,7 @@ let selectedHeroes = [];
 */
 function fillHeroTemplate(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
-    let heroLi = clone.querySelector('.js-hero-card')
-    //dataSet
-    heroLi.dataset.intelligence = hero.powerstats.intelligence
-    //reviewed to be deleted the two under
-    // heroLi.dataset.id = hero.id;
-    heroLi.dataset.name = hero.name;
-    // heroLi.dataset.durability = hero.powerstats.durability
-    // heroLi.dataset.strength = hero.powerstats.strength
-    // heroLi.dataset.speed = hero.powerstats.speed
-    // heroLi.dataset.power = hero.powerstats.power
-    // heroLi.dataset.combat = hero.powerstats.combat
+    clone.querySelector('.js-hero-card').dataset.name = hero.name;
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
