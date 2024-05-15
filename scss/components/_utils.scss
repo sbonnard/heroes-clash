@@ -1,15 +1,21 @@
 /* Utils */
 
 .container {
-    margin:  1.75rem;
+    margin: 1.75rem;
     border-radius: 2rem;
+
+    &__cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0.5rem 0;
+    }
 }
 
 .flex {
     display: flex;
     flex-direction: column;
 
-    &--horizontal{
+    &--horizontal {
         flex-direction: row;
         overflow-x: scroll;
         gap: 1rem;

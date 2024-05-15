@@ -7,44 +7,55 @@
     text-transform: uppercase;
     align-items: center;
     color: $cream;
+    position: relative;
+    width: 100%;
 
     &__frame {
-        width: 50%;
-        position: absolute;
+        width: 75%;
         z-index: 10;
-
     }
 
     &__name {
-        position: relative;
+        position: absolute;
         font-size: 1.125rem;
         z-index: 100;
-        bottom: 4.5rem;
+        bottom: 30%;
     }
 
     &__attack {
-        position: relative;
-        font-size: 1.625rem;
+        position: absolute;
+        font-size: 1rem;
         z-index: 10;
-        bottom: 13.5rem;
-        left: -3.75rem;
+        top: 11%;
+        left: 19%;
         text-shadow: 0 3px $black50;
+        width: 30px;
+        text-align: center;
     }
 
     &__pv {
-        font-size: 2.125rem;
-        position: relative;
-        z-index: 10;
-        bottom: 4.60rem;
+        font-size: 1.5rem;
+        position: absolute;
+        z-index: 5;
+        bottom: -9%;
         text-shadow: 0 3px $black50;
+        width: 50px;
+        height: 50px;
+        text-align: center;
     }
 
     &__img {
-        position: relative;
-        width: 56%;
-        top: 3.75rem;
+        position: absolute;
+        width: 75%;
+        top: 0%;
         mask-image: url(/img/mask.svg);
         mask-repeat: no-repeat;
+    }
+
+    &__health-bar {
+        position: absolute;
+        width: 20%;
+        bottom: 5%;
     }
 
 }
