@@ -94,6 +94,11 @@ body {
   margin: 1.75rem;
   border-radius: 2rem;
 }
+.container__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem 0;
+}
 
 .flex {
   display: flex;
@@ -134,9 +139,10 @@ body {
   align-items: center;
   color: #FBF5E8;
   position: relative;
+  width: 100%;
 }
 .hero__frame {
-  width: 50%;
+  width: 75%;
   z-index: 10;
 }
 .hero__name {
@@ -147,32 +153,37 @@ body {
 }
 .hero__attack {
   position: absolute;
-  font-size: 1.25rem;
+  font-size: 1rem;
   z-index: 10;
-  top: 12%;
-  left: 31%;
+  top: 11%;
+  left: 19%;
   text-shadow: 0 3px rgba(1, 1, 1, 0.5);
   width: 30px;
   text-align: center;
 }
 .hero__pv {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   position: absolute;
-  z-index: 10;
-  bottom: 7%;
+  z-index: 5;
+  bottom: -9%;
   text-shadow: 0 3px rgba(1, 1, 1, 0.5);
   width: 50px;
+  height: 50px;
   text-align: center;
-  background-image: url(/img/health-bar.svg);
 }
 .hero__img {
   position: absolute;
-  width: 50%;
+  width: 75%;
   top: 0%;
   -webkit-mask-image: url(/img/mask.svg);
           mask-image: url(/img/mask.svg);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
+}
+.hero__health-bar {
+  position: absolute;
+  width: 20%;
+  bottom: 5%;
 }
 
 .sectionheader {
@@ -200,9 +211,10 @@ body {
   align-items: center;
   color: #FBF5E8;
   position: relative;
+  width: 100%;
 }
 .hero__frame {
-  width: 50%;
+  width: 75%;
   z-index: 10;
 }
 .hero__name {
@@ -213,32 +225,37 @@ body {
 }
 .hero__attack {
   position: absolute;
-  font-size: 1.25rem;
+  font-size: 1rem;
   z-index: 10;
-  top: 12%;
-  left: 31%;
+  top: 11%;
+  left: 19%;
   text-shadow: 0 3px rgba(1, 1, 1, 0.5);
   width: 30px;
   text-align: center;
 }
 .hero__pv {
-  font-size: 1.875rem;
+  font-size: 1.5rem;
   position: absolute;
-  z-index: 10;
-  bottom: 7%;
+  z-index: 5;
+  bottom: -9%;
   text-shadow: 0 3px rgba(1, 1, 1, 0.5);
   width: 50px;
+  height: 50px;
   text-align: center;
-  background-image: url(/img/health-bar.svg);
 }
 .hero__img {
   position: absolute;
-  width: 50%;
+  width: 75%;
   top: 0%;
   -webkit-mask-image: url(/img/mask.svg);
           mask-image: url(/img/mask.svg);
   -webkit-mask-repeat: no-repeat;
           mask-repeat: no-repeat;
+}
+.hero__health-bar {
+  position: absolute;
+  width: 20%;
+  bottom: 5%;
 }
 
 .ttl {

@@ -8,9 +8,10 @@
     align-items: center;
     color: $cream;
     position: relative;
+    width: 100%;
 
     &__frame {
-        width: 50%;
+        width: 75%;
         z-index: 10;
     }
 
@@ -23,32 +24,38 @@
 
     &__attack {
         position: absolute;
-        font-size: 1.25rem;
+        font-size: 1rem;
         z-index: 10;
-        top: 12%;
-        left: 31%;
+        top: 11%;
+        left: 19%;
         text-shadow: 0 3px $black50;
         width: 30px;
         text-align: center;
     }
 
     &__pv {
-        font-size: 1.875rem;
+        font-size: 1.5rem;
         position: absolute;
-        z-index: 10;
-        bottom: 7%;
+        z-index: 5;
+        bottom: -9%;
         text-shadow: 0 3px $black50;
         width: 50px;
+        height: 50px;
         text-align: center;
-        background-image: url(/img/health-bar.svg);
     }
 
     &__img {
         position: absolute;
-        width: 50%;
+        width: 75%;
         top: 0%;
         mask-image: url(/img/mask.svg);
         mask-repeat: no-repeat;
+    }
+
+    &__health-bar {
+        position: absolute;
+        width: 20%;
+        bottom: 5%;
     }
 
 }
