@@ -14,38 +14,43 @@
         <img class="header__logo" src="img/principal.webp" alt="">
     </header>
     <main>
-<<<<<<< HEAD
-=======
-        <h2> Selected Player</h2>
-        <ul id="SelectedHero"> </ul>
-        <!-- <ul>
-            <li class="form__itm">
-                <label class="input__label" for="inputField">
-                    Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
-                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
-                    aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
-                <div class="suggestions" id="suggestions"></div>
-                <ul id="selectedItemsList"></ul>
-            </li>
-        </ul> -->
->>>>>>> listenToCard
 
-        <section aria-labelledby="inputFieldLabel flex">
-            <label class="input__label" for="inputField" id="inputFieldLabel">Choisis tes Héros</label>
-            <input class="input" type="text" id="inputField" name="inputField"
-                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+        <!-- ? ============================= -->
+        <!-- ! BARRE DE RECHERCHE -->
+        <!-- ? ============================= -->
+
+        <section aria-labelledby="inputFieldLabel" class="flex">
+
+            <label class="input__label" for="inputField" id="inputFieldLabel">Recherche</label>
+            <input class="input" type="text" id="inputField" name="inputField" aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
             <div class="suggestions" id="suggestions"></div>
         </section>
 
-        <!-- showing all heros -->
-        <section class="container">
-            <h2>Sélection de Héros</h2>
+        <!-- ? ============================= -->
+        <!-- ! BARRE DE RECHERCHE -->
+        <!-- ? ============================= -->
+
+
+
+        <!-- ? ============================= -->
+        <!-- ! Suggestions aléatoires des Héros -->
+        <!-- ? ============================= -->
+
+        <section class="container background">
+            <h2>Suggestions :</h2>
             <ul id="all-heros" class="flex flex--horizontal">
             </ul>
         </section>
-        <!-- end showing all heros -->
 
-        <!-- showing all heros -->
+        <!-- ? ============================= -->
+        <!-- ! Suggestions aléatoires des Héros -->
+        <!-- ? ============================= -->
+
+        
+
+        <!-- ? ============================= -->
+        <!-- ! DECK -->
+        <!-- ? ============================= -->
 
         <section class="container">
             <h2>Votre Deck</h2>
@@ -56,22 +61,11 @@
             </div>
         </section>
 
+        <!-- ? ============================= -->
+        <!-- ! DECK -->
+        <!-- ? ============================= -->
 
-<<<<<<< HEAD
-        <h2> Selected Player</h2>
-        <ul id="SelectedHero"> </ul>
-        <ul>
-            <li class="form__itm">
-                <label class="input__label" for="inputField">
-                    Choisis tes combattants en tapant le nom de tes héros préférés ! </label>
-                <input class="input input__select" type="text" id="inputField" name="inputField" placeholder="Batman..."
-                    aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
-                <div class="suggestions" id="suggestions"></div>
-                <ul id="selectedItemsList"></ul>
-            </li>
-        </ul>
-=======
->>>>>>> listenToCard
+
     </main>
     <template id="heroes-template">
         <li class="favourites js-hero-card">
