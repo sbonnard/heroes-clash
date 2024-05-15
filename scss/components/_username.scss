@@ -1,0 +1,12 @@
+.username {
+    background-color: $cream;
+    border-radius: 1rem;
+    width: 90%;
+    margin: 0 5%; 
+    padding: 1rem 1rem;
+
+    &--icon {
+        width: 3rem;
+        position: absolute;
+    }
+}

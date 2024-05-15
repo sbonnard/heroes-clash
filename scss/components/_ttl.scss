@@ -8,5 +8,21 @@
         padding-top: 3rem;
         padding-bottom: 3rem;
     };
+
+    &--black {
+        color: $black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2rem;
+    };
+
+    &--tokenwallet {
+        color: $black;
+        font-weight: bold;
+        text-align: center;
+        font-size: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    };
 }
 

@@ -1,6 +1,7 @@
 .banner {
-    width: 100%;
     background-image: url(/img/banner.jpg);
-    position: absolute;
+    background-size: cover;
+    mask-image: linear-gradient(black 90%, transparent);
     height:  12rem;
+
     }
