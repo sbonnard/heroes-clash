@@ -190,14 +190,23 @@ function startBattleRoyalInterval(characterArray) {
 
 
 
-//show heros
-
+/**
+ * show list of here in page by creating li trmplates
+ * @param {object} hero un object of hero.
+ */
 function showHeros(hero) {
     let clone = fillHeroTemplate(hero);
     allHeros.appendChild(clone);
 
 }
 
+/**
+ * show serial number of heroes. see showHeros()function
+ * @param {number} start the shown Start.
+ * @param {number} end the show end 
+ * @param {array} data array of object heros
+ * @returns 
+ */
 function showNOfHeros(start, end, data) {
     if (start < 0) { start = 0; }
     if (end > Heroes.length) { end = Heroes.length }
@@ -208,8 +217,11 @@ function showNOfHeros(start, end, data) {
 
 }
 
-showNOfHeros(0, 10, Heroes)
 
+/**
+ * listen to the click in heros list then handle the event see  handleClickHero(e) function
+ * @param {*} targetClass 
+ */
 function listenToHeroes(targetClass) {
     const allheroes = document.querySelectorAll(targetClass)
 
@@ -220,7 +232,7 @@ function listenToHeroes(targetClass) {
 }
 
 
-listenToHeroes('.js-hero-card')
+
 
 function handleClickHero(e) {
     selectedHeroes.push(e.target.parentNode);
@@ -228,12 +240,16 @@ function handleClickHero(e) {
 
 }
 
+
+/**
+ * get the list of herers (li selected hero) and search by name to get the hero in json format and push it in characters list 
+ * @param {*} heroes 
+ */
 function showSelectedHeros(heroes) {
     heroes.forEach(hero => {
         const selectedUL = document.getElementById("Selected-hero");
         selectedUL.appendChild(hero);
-        console.log(hero)
-        let character = constructHeroCharacter(hero)
+        let character = searchByheroName(hero.dataset.name)
         characters.push(character)
 
     });
@@ -241,12 +257,11 @@ function showSelectedHeros(heroes) {
 
 
 
-function constructHeroCharacter(hero) {
-    console.log(hero.dataset.name)
-    console.log(searchByheroName(hero.dataset.name))
-    return searchByheroName(hero.dataset.name)
-}
-
+/**
+ * search by hero name
+ * @param {string} heroName 
+ * @returns {object} return hero if it was found it otherwise returns null 
+ */
 function searchByheroName(heroName) {
     if (heroName !== '') {
         return Heroes.find(hero => {
@@ -257,9 +272,13 @@ function searchByheroName(heroName) {
     return null;
 }
 
-console.log(searchByheroName("Abin Sur"))
 
 
+
+/**
+ * starts fight
+ * @returns 
+ */
 function startFight() {
     if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
 
@@ -268,11 +287,21 @@ function startFight() {
 
 }
 
+
+//show 10 of heros
+showNOfHeros(0, 10, Heroes)
+
+//listen to heros
+listenToHeroes('.js-hero-card')
+
+//button to start fight
 document.getElementById("start-fight").addEventListener("click", () => {
     startFight()
     console.log(characters)
 
 })
+
+
 
 
 // function showingResult() {

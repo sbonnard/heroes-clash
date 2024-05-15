@@ -1,6 +1,7 @@
 @import "root";
 @import "reset";
 @import "var";
+@import "fonts";
 
 
 /* Components */
@@ -11,3 +12,5 @@
 @import "./components/utils";
 @import "./components/input";
 @import "./components/background";
+@import "./components/hero";
+@import "./components/sectionheader"
