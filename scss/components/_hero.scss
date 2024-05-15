@@ -20,14 +20,14 @@
         position: relative;
         font-size: 1.125rem;
         z-index: 100;
-        bottom: 3.5rem;
+        bottom: 4.5rem;
     }
 
     &__attack {
         position: relative;
         font-size: 1.625rem;
         z-index: 10;
-        bottom: 12.5rem;
+        bottom: 13.5rem;
         left: -3.75rem;
         text-shadow: 0 3px $black50;
     }
@@ -36,15 +36,16 @@
         font-size: 2.125rem;
         position: relative;
         z-index: 10;
-        bottom: 3.6rem;
+        bottom: 4.60rem;
         text-shadow: 0 3px $black50;
     }
 
     &__img {
         position: relative;
-        width: 50%;
-        // mask-image: url(/img/card-mask.png);
-
+        width: 56%;
+        top: 3.75rem;
+        mask-image: url(/img/mask.svg);
+        mask-repeat: no-repeat;
     }
 
 }
