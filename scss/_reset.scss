@@ -28,8 +28,10 @@ input {
     appearance: none;
 }
 
-body{
+body {
     overflow-x: hidden;
-    // color: $cream;
+    background-image: url(/img/background-dark.png);
+    font-family: 'oswald';
     // background-image: url(/img/background-dark.png);
+    // background-repeat: no-repeat;
 }
