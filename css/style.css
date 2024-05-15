@@ -126,26 +126,35 @@ body {
   flex-direction: column;
   justify-content: center;
   text-transform: uppercase;
+  align-items: center;
   color: #FBF5E8;
+  background-image: url(/img/atk-icon-full-size.png);
 }
 .hero__frame {
   width: 50%;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 }
 .hero__name {
   position: relative;
   font-size: 1.125rem;
-  z-index: 10;
-  bottom: 4.25rem;
+  z-index: 100;
+  bottom: 3.5rem;
 }
 .hero__attack {
   position: relative;
+  font-size: 1.625rem;
   z-index: 10;
+  bottom: 12.5rem;
+  left: -3.75rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
 }
 .hero__pv {
+  font-size: 2.125rem;
   position: relative;
   z-index: 10;
+  bottom: 3.6rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
 }
 .hero__img {
   position: relative;
@@ -174,26 +183,35 @@ body {
   flex-direction: column;
   justify-content: center;
   text-transform: uppercase;
+  align-items: center;
   color: #FBF5E8;
+  background-image: url(/img/atk-icon-full-size.png);
 }
 .hero__frame {
   width: 50%;
   position: absolute;
-  z-index: 1;
+  z-index: 10;
 }
 .hero__name {
   position: relative;
   font-size: 1.125rem;
-  z-index: 10;
-  bottom: 4.25rem;
+  z-index: 100;
+  bottom: 3.5rem;
 }
 .hero__attack {
   position: relative;
+  font-size: 1.625rem;
   z-index: 10;
+  bottom: 12.5rem;
+  left: -3.75rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
 }
 .hero__pv {
+  font-size: 2.125rem;
   position: relative;
   z-index: 10;
+  bottom: 3.6rem;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
 }
 .hero__img {
   position: relative;
