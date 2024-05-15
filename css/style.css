@@ -42,6 +42,13 @@ body {
 /* Colours */
 /* Primary coulours */
 /* Secondary coulours */
+/* Fonts */
+@font-face {
+  font-family: "oswald";
+  src: url(/fonts/oswald-regular-webfont.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 /* Components */
 /* Header */
 .header {
@@ -100,4 +107,14 @@ body {
   background-image: url(/img/search.png);
   background-size: cover;
   background-position: left;
+}
+
+/* Hero */
+.hero {
+  font-family: "oswald";
+  text-transform: uppercase;
+  color: #FBF5E8;
+}
+.hero__name {
+  background-color: rgba(0, 0, 0, 0.5);
 }/*# sourceMappingURL=style.css.map */

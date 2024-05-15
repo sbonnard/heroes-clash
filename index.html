@@ -14,8 +14,6 @@
         <img class="header__logo" src="img/principal.webp" alt="">
     </header>
     <main>
-        <h2> Selected Player</h2>
-        <ul id="SelectedHero"> </ul>
 
         <section aria-labelledby="inputFieldLabel flex">
             <label class="input__label" for="inputField" id="inputFieldLabel">Choisis tes Héros</label>
@@ -57,10 +55,10 @@
 
     </main>
     <template id="heroes-template">
-        <li class="favourites js-hero-card">
+        <li class="js-hero-card hero">
             <button class="button--minus" data-favourite-minus=""></button>
             <img class="js-hero-img" src="" alt="">
-            <h2 class="txt--bigger js-favourite-hero">Patate</h2>
+            <h2 class="js-favourite-hero hero__name">Patate</h2>
             <p class="js-attack">25</p>
             <p class="js-pv">25</p>
         </li>
