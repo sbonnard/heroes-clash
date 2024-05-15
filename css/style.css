@@ -122,6 +122,9 @@ body {
 
 /* Hero */
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-transform: uppercase;
   color: #FBF5E8;
 }
@@ -132,6 +135,17 @@ body {
 }
 .hero__name {
   position: relative;
+  font-size: 1.125rem;
+  z-index: 10;
+  bottom: 4.25rem;
+}
+.hero__attack {
+  position: relative;
+  z-index: 10;
+}
+.hero__pv {
+  position: relative;
+  z-index: 10;
 }
 .hero__img {
   position: relative;
@@ -156,6 +170,9 @@ body {
 
 /* Hero */
 .hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-transform: uppercase;
   color: #FBF5E8;
 }
@@ -166,6 +183,17 @@ body {
 }
 .hero__name {
   position: relative;
+  font-size: 1.125rem;
+  z-index: 10;
+  bottom: 4.25rem;
+}
+.hero__attack {
+  position: relative;
+  z-index: 10;
+}
+.hero__pv {
+  position: relative;
+  z-index: 10;
 }
 .hero__img {
   position: relative;
