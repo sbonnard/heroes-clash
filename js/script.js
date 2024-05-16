@@ -8,10 +8,15 @@ const inputField = document.getElementById('inputField');
 const selectedItemsList = document.getElementById('selectedItemsList');
 // array shows the selected heros (json);
 let selectedHeroes = [];
+//search bar
 const suggestions = document.getElementById('suggestions');
+//ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
+// array showing hero(under name of ttl suggestions)
+let allHerosArray = [];
+
 const heroesTemplate = document.getElementById("heroes-template");
-// let showFightResult = document.getElementById('show-fight-result');
+let showFightResult = document.getElementById('show-fight-result');
 
 /**
  * Create a template and loads informations about the hero.
@@ -86,6 +91,9 @@ function showNOfHeros(start, end, data) {
     if (end > Heroes.length) { end = Heroes.length }
     for (start; start < end; start++) {
         showHeros(data[start])
+        //add hero to array
+        allHerosArray.push(data[start])
+
     }
     return data[start]
 
@@ -96,29 +104,36 @@ function showNOfHeros(start, end, data) {
  * listen to the click in heros list then handle the event see  handleClickHero(e) function
  * @param {*} targetClass 
  */
-function listenToHeroes(targetClass) {
-    const allheroes = document.querySelectorAll(targetClass)
-
-    allheroes.forEach(hero => {
-        hero.addEventListener("click", handleClickHero);
+function listenToHeroes(targetClass, handle) {
+    const allHeroes = document.querySelectorAll(targetClass);
+    allHeroes.forEach(hero => {
+        hero.addEventListener("click", handle);
     });
-
 }
-
-
-
 
 function handleClickHero(e) {
-    //add to ul and array
+    // Add to selected list and array
     selectedItemsList.appendChild(e.target.parentNode);
-    let character = searchByheroName(hero.dataset.name)
-    selectedHeroes.push(character)
-    // showSelectedHeros(selectedHeroes);
-
+    let character = searchByheroName(e.target.dataset.name); // Use e.target
+    selectedHeroes.push(character);
+    console.log("1");
 }
 
 
-// showSelectedHeros(heroes)
+
+
+//listen to heros
+listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+// listenToHeroes('#selectedItemsList .js-hero-card', handleSelectedClickHero);
+
+
+function handleSelectedClickHero(e){
+    console.log("2")
+    console.log(e)
+}
+
+
+
 
 /**
  * search by hero name
@@ -137,7 +152,6 @@ function searchByheroName(heroName) {
 
 
 
-
 /**
  * starts fight
  * @returns 
@@ -152,10 +166,9 @@ function startFight() {
 
 
 //show 10 of heros
-showNOfHeros(0, 10, Heroes)
+showNOfHeros(0, 4, Heroes)
 
-//listen to heros
-listenToHeroes('.js-hero-card')
+
 
 //button to start fight
 document.getElementById("start-fight").addEventListener("click", () => {
@@ -189,16 +202,6 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
     target.appendChild(clone);
 }
 
-
-
-selectedItemsList.addEventListener("click", handleClickedSelected)
-
-function handleClickedSelected(e) {
-    console.log(e.target.parentNode);
-    allHeros.appendChild(e.target.parentNode);
-    e.target.parentNode.remove()
-
-}
 
 
 
