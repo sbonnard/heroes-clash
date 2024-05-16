@@ -1,4 +1,4 @@
-// import Heroes from "/json/api-heroes.json" with {type: "json" }
+import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 
 let characters = []
@@ -12,15 +12,6 @@ let selectedHeroes = [];
 const suggestions = document.getElementById('suggestions');
 //ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
-<<<<<<< HEAD
-
-
-
-function createRemoveBtn() {
-    heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
-}
-
-=======
 // array showing hero(under name of ttl suggestions)
 
 const infoIcon = document.getElementById('info-icon');
@@ -28,7 +19,6 @@ const infoIcon = document.getElementById('info-icon');
 const overlay = document.querySelector('.js-caracteristics');
 
 let allHerosArray = [];
->>>>>>> master
 
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
@@ -53,21 +43,6 @@ function fillHeroTemplate(hero) {
     clone.querySelector('.js-caracteristics-speed').innerText = hero.powerstats.speed;
 
     return clone
-}
-
-<<<<<<< Updated upstream
-<<<<<<< HEAD
-function addRandomValueToNullData(){
-    
-=======
-
-function createRemoveBtn() {
-    heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
->>>>>>> master
-=======
-function addRandomValueToNullData(){
-    
->>>>>>> Stashed changes
 }
 
 
@@ -116,10 +91,13 @@ inputField.addEventListener('keyup', function (event) {
                 // });
                 selectedItemsList.appendChild(clone);
                 newHero.remove();
-            });
+                selectedItemsList.addEventListener("click",handleClickHero)   
+
+});
             const textItem = document.createTextNode(hero.name);
             newHero.appendChild(textItem);
             suggestions.appendChild(newHero);
+
         });
     } else {
         suggestions.innerHTML = '';
@@ -146,7 +124,6 @@ function listenToHeroes(targetClass, handle) {
 
 function handleClickHero(e) {
     let li = e.target.parentNode;
-
     if (li.parentNode === selectedItemsList) {
         allHeros.appendChild(li);
     } else if (li.parentNode === allHeros) {
@@ -352,6 +329,8 @@ function startBattleRoyalInterval(characterArray) {
 
 
 
+
+
 ////////////////////////////
 
 // `https://www.superheroapi.com/api.php/${apiKey}/search/${query}?maxResults=${maxResults}&startIndex=${startIndex}`
@@ -361,9 +340,11 @@ const apiKey = '3e85eda0169c3aa450196a790ac1966f';
 async function fetchAllHeroes() {
     try {
         const heroes = [];
+
         for (let i = 1; i <= 4; i++) {
             let id = getRandomValue(731);
             const apiUrl = `https://www.superheroapi.com/api.php/${apiKey}/${id}`;
+
             const response = await axios.get(apiUrl);
             showHeros(response.data)
             heroes.push(response.data);
@@ -372,6 +353,7 @@ async function fetchAllHeroes() {
         console.log(heroes);
         //listen to click in all heros (suggestions)
         listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+        listenToHeroes('#selectedItemsList .js-hero-card', handleClickHero);
         //button to start fight
         document.getElementById("start-fight").addEventListener("click", () => {
 
@@ -381,12 +363,10 @@ async function fetchAllHeroes() {
             // fight(characters)
         })
 
-
-
-        infoIcon.addEventListener('click', function () {
-            this.classList.toggle("close");
-            overlay.classList.toggle("overlay");
-        });
+        // infoIcon.addEventListener('click', function () {
+        //     this.classList.toggle("close");
+        //     overlay.classList.toggle("overlay");
+        // });
 
         return heroes;
     }
@@ -402,5 +382,11 @@ async function fetchAllHeroes() {
 }
 
 fetchAllHeroes();
+
+
+
+
+
+
 
 
