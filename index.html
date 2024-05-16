@@ -11,7 +11,7 @@
 
 <body>
     <header class="header">
-        <img class="header__logo" src="img/principal.webp" alt="">
+        <a href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
     </header>
     <main>
 
@@ -31,10 +31,6 @@
             <div class="suggestions" id="suggestions"></div>
         </section>
 
-        <!-- ? ============================= -->
-        <!-- ! BARRE DE RECHERCHE -->
-        <!-- ? ============================= -->
-
 
 
         <!-- ? ============================= -->
@@ -51,9 +47,6 @@
             </ul>
         </section>
 
-        <!-- ? ============================= -->
-        <!-- ! Suggestions aléatoires des Héros -->
-        <!-- ? ============================= -->
 
 
         <!-- ? ============================= -->
@@ -73,8 +66,20 @@
         </section>
 
         <!-- ? ============================= -->
+        <!-- ! Bouton pour passer a l'étapee de pari -->
+        <!-- ? ============================= -->   
+        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">Etape Suivante!!!</button>
         <!-- ! DECK -->
         <!-- ? ============================= -->
+
+        <div>-----------------------------------------------------</div>
+        <!-- showing all heros -->
+
+        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now
+            start
+
+        </ul>
+        <button class="start-fight nextstep" aria-label="start fight" type="button" id="start-fight">Etape suivante</button>
 
 
         <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now start
@@ -83,20 +88,46 @@
         <ol id="show-fight-result"></ol>
         <p id="show-fight-table"></p>
 
+         <!-- ? ============================= -->
+        <!-- ! PARI -->
+        <!-- ? ============================= -->
+
+        <section class="container background">
+
+            <div class="sectionheader sectionheader--blue">
+                <h2 class="ttl">Votre pari</h2>
+            </div>
+            <p class="">Montant du pari :</p>
+            
+            <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">Lancer le combat</button>
+            
+        </section>
 
     </main>
 
     <template id="heroes-template">
-        <li class="js-hero-card hero">
-            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
-            <!-- <button class="button--minus" data-favourite-minus=""></button> -->
-            <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations" aria-label="Obtenir des informations complémentaires sur le héros">
-            <img class="js-hero-img hero__img" src="" alt="">
-            <h2 class="js-favourite-hero hero__name">Patate</h2>
-            <p class="js-attack hero__attack">25</p>
-            <p class="js-pv hero__pv">25</p>
-            <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
-        </li>
+        <div class="flex">
+            <li class="js-hero-card hero">
+                <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+                <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+                <a href="#caracteristics" id="info-icon">
+                    <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations"
+                        aria-label="Obtenir des informations complémentaires sur le héros">
+                </a>
+                <img class="js-hero-img hero__img" src="" alt="">
+                <h2 class="js-favourite-hero hero__name">Patate</h2>
+                <p class="js-attack hero__attack">25</p>
+                <p class="js-pv hero__pv">25</p>
+                <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
+            </li>
+            <section class="js-caracteristics caracteristics">
+                <h2 class="js-favourite-hero-caracteristics caracteristics__ttl">Hero Name</h2>
+                <p>Univers : <span class="js-caracteristics-universe">0</span></p>
+                <p>Attaque : <span class="js-caracteristics-atk">0</span></p>
+                <p>PV : <span class="js-caracteristics-pv">0</span></p>
+                <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
+            </section>
+        </div>
     </template>
 
 
@@ -162,7 +193,7 @@
         </section>
     </footer>
 
-    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
