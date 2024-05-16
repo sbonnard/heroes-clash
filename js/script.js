@@ -45,7 +45,6 @@ function fillHeroTemplate(hero) {
     return clone
 }
 
-
 function heroDataSet(clone, hero) {
     clone.querySelector('.js-hero-card').dataset.name = hero.name;
     clone.querySelector('.js-hero-card').dataset.durability = hero.powerstats.durability;
