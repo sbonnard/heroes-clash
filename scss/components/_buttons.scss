@@ -9,8 +9,27 @@
     }
 }
 
-.start-fight {
-    width: 25%;
-    height: 5rem;
-    background-color: red;
+.nextstep {
+    background-color: $yellow;
+    border-radius: 1.5rem;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 4rem;
+    font-family: 'oswald';
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.startfightbutton {
+    font-family: 'oswald';
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: $yellow;
+    border-radius: 1.5rem;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 4rem;
+    
 }

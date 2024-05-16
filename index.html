@@ -11,7 +11,7 @@
 
 <body>
     <header class="header">
-        <img class="header__logo" src="img/principal.webp" alt="">
+        <a href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
     </header>
     <main>
 
@@ -31,10 +31,6 @@
             <div class="suggestions" id="suggestions"></div>
         </section>
 
-        <!-- ? ============================= -->
-        <!-- ! BARRE DE RECHERCHE -->
-        <!-- ? ============================= -->
-
 
 
         <!-- ? ============================= -->
@@ -51,9 +47,6 @@
             </ul>
         </section>
 
-        <!-- ? ============================= -->
-        <!-- ! Suggestions aléatoires des Héros -->
-        <!-- ? ============================= -->
 
 
         <!-- ? ============================= -->
@@ -73,21 +66,55 @@
         </section>
 
         <!-- ? ============================= -->
+        <!-- ! Bouton pour passer a l'étapee de pari -->
+        <!-- ? ============================= -->
+        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">Etape
+            Suivante!!!</button>
         <!-- ! DECK -->
         <!-- ? ============================= -->
 
+        <div>-----------------------------------------------------</div>
+        <!-- showing all heros -->
 
         <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now
             start
+<<<<<<< HEAD
             fight </button>
+=======
+>>>>>>> master
 
-        <ol id="show-fight-result"></ol>
-        <p id="show-fight-table"></p>
+            </ul>
+            <button class="start-fight nextstep" aria-label="start fight" type="button" id="start-fight">Etape
+                suivante</button>
 
+
+            <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now
+                start
+                fight </button>
+
+            <ol id="show-fight-result"></ol>
+            <p id="show-fight-table"></p>
+
+            <!-- ? ============================= -->
+            <!-- ! PARI -->
+            <!-- ? ============================= -->
+
+            <section class="container background">
+
+                <div class="sectionheader sectionheader--blue">
+                    <h2 class="ttl">Votre pari</h2>
+                </div>
+                <p class="">Montant du pari :</p>
+
+                <button class="start-fight startfightbutton" aria-label="start fight" type="button"
+                    id="start-fight">Lancer le combat</button>
+
+            </section>
 
     </main>
 
     <template id="heroes-template">
+<<<<<<< HEAD
         <li class="js-hero-card hero">
             <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
             <!-- <button class="button--minus" data-favourite-minus=""></button> -->
@@ -99,6 +126,32 @@
             <p class="js-pv hero__pv">25</p>
             <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
         </li>
+=======
+        <div class="flex">
+            <li class="js-hero-card hero">
+                <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+                <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+                <a href="#caracteristics" id="info-icon">
+                    <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations"
+                        aria-label="Obtenir des informations complémentaires sur le héros">
+                </a>
+                <img class="js-hero-img hero__img" src="" alt="">
+                <h2 class="js-favourite-hero hero__name">Patate</h2>
+                <p class="js-attack hero__attack">25</p>
+                <p class="js-pv hero__pv">25</p>
+                <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
+            </li>
+            <section class="js-caracteristics caracteristics">
+                <h2 class="js-favourite-hero-caracteristics caracteristics__ttl">Hero Name</h2>
+                <div class="caracteristics__stats">
+                    <p>Univers : <span class="js-caracteristics-universe">0</span></p>
+                    <p>Attaque : <span class="js-caracteristics-atk">0</span></p>
+                    <p>PV : <span class="js-caracteristics-pv">0</span></p>
+                    <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
+                </div>
+            </section>
+        </div>
+>>>>>>> master
     </template>
 
 
@@ -133,9 +186,9 @@
             <h6 class="footer__ttl">Aide</h6>
             <nav>
                 <ul>
-                    <li><a href="">Méthodes de paiments</a></li>
-                    <li><a href="">Guide utilisateur</a></li>
-                    <li><a href="">Support</a></li>
+                    <li class="footer__lnk"><a href="">Méthodes de paiments</a></li>
+                    <li class="footer__lnk"><a href="">Guide utilisateur</a></li>
+                    <li class="footer__lnk"><a href="">Support</a></li>
                 </ul>
             </nav>
         </section>
@@ -143,24 +196,29 @@
             <h6 class="footer__ttl">A propos</h6>
             <nav>
                 <ul>
-                    <li><a href="">La compagnie</a></li>
-                    <li><a href="">Conditions générales d’utilisation</a></li>
-                    <li><a href="">Site map</a></li>
+                    <li class="footer__lnk"><a href="">La compagnie</a></li>
+                    <li class="footer__lnk"><a href="">Conditions générales d’utilisation</a></li>
+                    <li class="footer__lnk"><a href="">Site map</a></li>
                 </ul>
             </nav>
         </section>
         <section class="footer__regle">
+<<<<<<< HEAD
             <img src="img/logo-18+.png" alt="">
+=======
+            <img src="img/logo-18+.png" alt="" class="footer__regle-img">
+>>>>>>> master
             <p class="footer__regle-txt">Les jeux de hasard et
                 d’argent sont interdits
-                aux mineurs</p>
+                <br>aux mineurs
+            </p>
         </section>
         <section class="footer__a-propos">
             <h6 class="footer__ttl">Données Personnelles</h6>
             <nav>
                 <ul>
-                    <li><a href="">Paramètres des cookies</a></li>
-                    <li><a href="">Politique de Confidentialité</a></li>
+                    <li class="footer__lnk"><a href="">Paramètres des cookies</a></li>
+                    <li class="footer__lnk"><a href="">Politique de Confidentialité</a></li>
                 </ul>
             </nav>
         </section>
