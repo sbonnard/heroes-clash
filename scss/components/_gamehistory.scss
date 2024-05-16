@@ -1,6 +1,7 @@
 .gamehistory{
-    margin: 0 3rem;
-    margin-top: 2rem;
+    width: 80%;
+    margin: 0 15%;
+    margin-top: 5rem;
     border-radius: 2rem;
     font-family: oswald;
     color: $cream;
@@ -8,13 +9,21 @@
     background-color: $cream;
 
     &--sectionheader{
-        margin: 0 2rem;
+        width: 19.25rem;
+        margin: 0 2.6875rem;
         background-color: $grey;
         border-radius: 2rem;
-        padding-top: 1rem;
-        padding-bottom: 0.8rem;
-        padding-left: 1.5rem;
+        padding: 1rem;
         font-family: oswald;
         text-align: center;
+        margin-bottom: -8rem;
+        position: absolute;
+    }
+
+    &__game{
+        border-radius: 2rem;
+        &--victory{
+            background-color: aquamarine;
+        }
     }
 }
