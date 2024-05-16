@@ -70,20 +70,19 @@
             <div class="flex">
                 <ul class="flex" id="selectedItemsList"></ul>
             </div>
-            <ul id="Selected-hero"> </ul>
+            <ul id="Selected-hero" class="container__cards"> </ul>
         </section>
 
         <!-- ? ============================= -->
+
+        <!-- ! Bouton pour passer a l'étapee de pari -->
+        <!-- ? ============================= -->
+        <button class="start-fight startfightbutton" aria-label="gambling" type="button" id="gambling">Etape
+            Suivante!!!</button>
+
         <!-- ! DECK -->
         <!-- ? ============================= -->
 
-
-        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now
-            start fight </button>
-
-            </ul>
-            <button class="start-fight nextstep" aria-label="start fight" type="button" id="gambling">Etape
-                suivante</button>
 
             <ol id="show-fight-result"></ol>
             <p id="show-fight-table"></p>
@@ -108,17 +107,30 @@
 
     </main>
 
-    <template id="heroes-template">
-        <li class="js-hero-card hero">
-            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
-            <!-- <button class="button--minus" data-favourite-minus=""></button> -->
-            <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations" aria-label="Obtenir des informations complémentaires sur le héros">
-            <img class="js-hero-img hero__img" src="" alt="">
-            <h2 class="js-favourite-hero hero__name">Patate</h2>
-            <p class="js-attack hero__attack">25</p>
-            <p class="js-pv hero__pv">25</p>
-            <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
-        </li>
+
+            <li class="js-hero-card flex hero">
+                <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+                <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+                <a href="#caracteristics" id="info-icon">
+                    <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations"
+                        aria-label="Obtenir des informations complémentaires sur le héros">
+                </a>
+                <img class="js-hero-img hero__img" src="" alt="">
+                <h2 class="js-favourite-hero hero__name">Patate</h2>
+                <p class="js-attack hero__attack">25</p>
+                <p class="js-pv hero__pv">25</p>
+                <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
+            </li>
+            <section class="js-caracteristics caracteristics">
+                <h2 class="js-favourite-hero-caracteristics caracteristics__ttl">Hero Name</h2>
+                <div class="caracteristics__stats">
+                    <p>Univers : <span class="js-caracteristics-universe">0</span></p>
+                    <p>Attaque : <span class="js-caracteristics-atk">0</span></p>
+                    <p>PV : <span class="js-caracteristics-pv">0</span></p>
+                    <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
+                </div>
+            </section>
+
     </template>
 
 
