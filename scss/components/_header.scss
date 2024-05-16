@@ -1,11 +1,24 @@
 /* Header */
 
 .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
     width: 100%;
-    background-color: $cream50;
-    height:  12rem;
+    background-color: $cream70;
+    height:  8rem;
+    padding: 0 2rem;
+    padding-top: 2rem;
 
     &__logo {
-        width: 5.375rem;
+        
+        &--l {
+            width: 5.375rem;
+        }
+        &--profilemenu {
+            width: 3.8125rem;
+        }
     }
 }
