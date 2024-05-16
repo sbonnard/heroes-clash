@@ -9,6 +9,7 @@
     color: $cream;
     position: relative;
     width: 100%;
+    padding: 0 0 2rem 0;
 
     &__frame {
         width: 75%;
@@ -17,18 +18,18 @@
 
     &__name {
         position: absolute;
-        font-size: 1.125rem;
+        font-size: 1rem;
         z-index: 100;
-        bottom: 30%;
+        bottom: 41%;
     }
 
     &__attack {
         position: absolute;
         font-size: 1rem;
         z-index: 10;
-        top: 11%;
+        top: 10%;
         left: 19%;
-        text-shadow: 0 3px $black50;
+        text-shadow: 0 2px $black50;
         width: 30px;
         text-align: center;
     }
@@ -37,8 +38,8 @@
         font-size: 1.5rem;
         position: absolute;
         z-index: 5;
-        bottom: -9%;
-        text-shadow: 0 3px $black50;
+        bottom: 8.5%;
+        text-shadow: 0 2px $black50;
         width: 50px;
         height: 50px;
         text-align: center;
@@ -55,7 +56,14 @@
     &__health-bar {
         position: absolute;
         width: 20%;
-        bottom: 5%;
+        bottom: 21%;
+    }
+
+    &__infos {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        right: 12%;
     }
 
 }
