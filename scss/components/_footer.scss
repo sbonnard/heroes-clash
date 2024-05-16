@@ -1,7 +1,10 @@
 .footer {
     background-color: $cream;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template: 
+    "a b" auto
+    "c d" auto 
+    / 1fr 1fr;
 
     &__section {
         width: 50%;
@@ -13,6 +16,8 @@
     }
     
     &__regle {
+        display: flex;
+        gap: 1rem;
         margin-top: 2rem;
         padding-bottom: 2rem;
     }
@@ -24,6 +29,7 @@
     }
 
     &__ttl {
+        font-size: 1rem;
         font-weight: bold;
         margin-bottom: 1rem;
     }
