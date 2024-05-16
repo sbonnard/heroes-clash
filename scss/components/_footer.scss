@@ -6,9 +6,11 @@
     "c d" auto 
     / 1fr 1fr;
 
-    &__section {
-        width: 50%;
-    }
+    margin-top: 2rem;
+
+    // &__section {
+        // width: 50%;
+    // }
 
     &__aide {
         margin-top: 1rem;
@@ -17,7 +19,7 @@
     
     &__regle {
         display: flex;
-        gap: 1rem;
+        // gap: 1rem;
         margin-top: 2rem;
         padding-bottom: 2rem;
     }
@@ -25,7 +27,12 @@
     &__regle-txt {
         font-size: 0,3rem;
         width: 10rem;
-        padding-left: 2rem;
+        // padding-left: -2rem;
+    }
+
+    &__regle-img {
+        margin-left: 0.5rem;
+        margin-right: 0.5em;
     }
 
     &__ttl {
@@ -37,11 +44,14 @@
     &__a-propos {
         margin-top: 1rem;
         text-align: right;
-        padding-right: 0.5rem;
+        padding-right: 0rem;
+        width: 10rem;
+    }
+
+    &__lnk {
+        padding: 0.25rem 0 0.25rem 0;
     }
 }
-
-
 
 
 
