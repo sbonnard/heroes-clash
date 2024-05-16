@@ -55,6 +55,7 @@ function fillHeroTemplate(hero) {
     return clone
 }
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 function addRandomValueToNullData(){
     
@@ -63,6 +64,10 @@ function addRandomValueToNullData(){
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
 >>>>>>> master
+=======
+function addRandomValueToNullData(){
+    
+>>>>>>> Stashed changes
 }
 
 
