@@ -1,58 +1,47 @@
-footer{
+.footer {
     background-color: $cream;
     display: flex;
     flex-wrap: wrap;
+
+    &__section {
+        width: 50%;
+    }
+
+    &__aide {
+        margin-top: 1rem;
+        padding-left: 0.5rem;
+    }
+    
+    &__regle {
+        margin-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    &__regle-txt {
+        font-size: 0,3rem;
+        width: 10rem;
+        padding-left: 2rem;
+    }
+
+    &__ttl {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    &__a-propos {
+        margin-top: 1rem;
+        text-align: right;
+        padding-right: 0.5rem;
+    }
+
 }
 
-section {
-    width: 50%;
-}
 
-.données-pers {
-    font-size: 1rem;
-    margin-top: 1rem;
-    text-align: right;
-    padding-right: 0.5rem;
-}
 
-.a-propos {
-    font-size: 1rem;
-    margin-top: 1rem;
-    text-align: right;
-    padding-right: 0.5rem;
-}
 
-.aide {
-    font-size: 1rem;
-    margin-top: 1rem;
-    padding-left: 0.5rem;
-}
 
-.regle {
-    margin-top: 2rem;
-    padding-bottom: 2rem;
-}
 
-.regle p {
-    font-size: 0,3rem;
-    width: 10rem;
-    padding-left: 2rem;
-}
 
-.hfooter1 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
 
-.hfooter2 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
 
-.hfooter3 {
-    font-size: 1rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
+
