@@ -1,7 +1,7 @@
 // import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 
-const characters = []
+let characters = []
 
 const inputField = document.getElementById('inputField');
 //ul shows the selected heros (li);
@@ -24,13 +24,28 @@ let showFightResult = document.getElementById('show-fight-result');
 */
 function fillHeroTemplate(hero) {
     let clone = document.importNode(heroesTemplate.content, true);
-    clone.querySelector('.js-hero-card').dataset.name = hero.name;
+    HeroDataSet(clone, hero)
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
     clone.querySelector('.js-hero-img').src = hero.image.url;
     return clone
 }
+
+function HeroDataSet(clone, hero) {
+    clone.querySelector('.js-hero-card').dataset.name = hero.name;
+    clone.querySelector('.js-hero-card').dataset.durability = hero.powerstats.durability;
+    clone.querySelector('.js-hero-card').dataset.strength = hero.powerstats.strength;
+    clone.querySelector('.js-hero-card').dataset.combat = hero.combat;
+    clone.querySelector('.js-hero-card').dataset.speed = hero.powerstats.speed;
+    clone.querySelector('.js-hero-card').dataset.universe = hero.powerstats.universe;
+    clone.querySelector('.js-hero-card').dataset.src = hero.image.url;
+
+}
+
+
+
+
 
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
@@ -114,6 +129,7 @@ function listenToHeroes(targetClass, handle) {
     });
 }
 
+
 function handleClickHero(e) {
     let li = e.target.parentNode;
 
@@ -125,15 +141,40 @@ function handleClickHero(e) {
 }
 
 
-//listen to heros
-// listenToHeroes('#all-heros .js-hero-card', handleClickHero);
-// listenToHeroes('#selectedItemsList .js-hero-card', handleSelectedClickHero);
-
-
-function handleSelectedClickHero(e) {
-    console.log("2")
-    console.log(e)
+function constructionHero(liHero) {
+    const hero = { powerstats: {},image:{url:""} }
+    hero.name = liHero.dataset.name;
+    hero.powerstats.durability = liHero.dataset.durability;
+    hero.powerstats.strength = liHero.dataset.strength;
+    hero.combat = liHero.dataset.combat;
+    hero.powerstats.speed = liHero.dataset.speed;
+    hero.powerstats.universe = liHero.dataset.universe
+    hero.image.url = liHero.dataset.url;
+    return hero;
 }
+
+function constructionAllHero(className) {
+    // let herosArray = []
+    const heroUl = document.querySelectorAll(className)
+    heroUl.forEach(liHero => {
+        
+        let hero = constructionHero(liHero);
+        characters.push(hero);
+    });
+}
+
+/**
+ * starts fight
+ * @returns 
+ */
+function startFight(className) {
+    constructionAllHero(className)
+    if (characters.length < 2) { console.log("At least you must choose two heros"); return }
+    
+    // showBattleTable.innerText = startBattleRoyalInterval(characters)
+    // const showBattleTable = document.getElementById('show-fight-result');
+}
+
 
 
 
@@ -155,33 +196,6 @@ function searchByheroName(heroName) {
 
 
 
-/**
- * starts fight
- * @returns 
- */
-function startFight() {
-    if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
-
-    const showBattleTable = document.getElementById('show-fight-result');
-    showBattleTable.innerText = startBattleRoyalInterval(characters)
-
-}
-
-
-// //show 10 of heros
-// showNOfHeros(0, 4, Heroes)
-
-
-
-//button to start fight
-document.getElementById("start-fight").addEventListener("click", () => {
-    startFight()
-    console.log(characters)
-
-})
-
-
-
 
 /**
  * show an hero by inject a html template in target html
@@ -194,6 +208,7 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
     const templateName = document.getElementById(templateId);
     let clone = document.importNode(templateName.content, true);
     const target = document.getElementById(targetId);
+    HeroDataSet(clone, hero)
     clone.querySelector('.js-name').innerText = hero.name;
     clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
     clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
@@ -322,24 +337,24 @@ function burnTheDead(charactersArray) {
 }
 
 
-// /**
-//  * Fight until only 1 remains
-//  * @param {array} characterArray -The array with all our characters
-//  * @return {object} -The winner's object
-//  */
-// function startBattleRoyalInterval(characterArray) {
+/**
+ * Fight until only 1 remains
+ * @param {array} characterArray -The array with all our characters
+ * @return {object} -The winner's object
+ */
+function startBattleRoyalInterval(characterArray) {
 
-//     const timer = setInterval(() => {
-//         const challengers = getChallengers(characterArray);
-//         showFightResult.innerText = fight(challengers)
-//         characterArray = burnTheDead(characterArray);
+    const timer = setInterval(() => {
+        const challengers = getChallengers(characterArray);
+        showFightResult.innerText = fight(challengers)
+        characterArray = burnTheDead(characterArray);
 
-//         if (characterArray.length === 1) {
-//             clearInterval(timer);
-//             console.table(characterArray[0]);
-//         }
-//     }, 1000);
-// }
+        if (characterArray.length === 1) {
+            clearInterval(timer);
+            console.table(characterArray[0]);
+        }
+    }, 1000);
+}
 
 
 
@@ -362,6 +377,15 @@ async function fetchAllHeroes() {
         console.log(heroes);
         //listen to click in all heros (suggestions)
         listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+        //button to start fight
+        document.getElementById("start-fight").addEventListener("click", () => {
+
+            constructionAllHero('#selectedItemsList .js-hero-card');
+            console.log(characters)
+     
+        })
+
+
 
 
         return heroes;
