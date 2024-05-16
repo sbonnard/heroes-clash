@@ -1,0 +1,39 @@
+.arena {
+    background-image: url(/img/background-arena.png);
+    height: 100%;
+
+    &__defender {
+        width: 17.125rem;
+        margin: 0rem 1.6875rem 0 5.75rem;
+    }
+
+    &__attacker {
+        width: 17.125rem;
+        margin: 2rem 5.75rem 0 1.6875rem;
+    }
+
+    &__logo {
+        width: 5rem;
+        margin: 1rem;
+    }
+
+    &__bottom-section {
+        display: flex;
+    }
+
+    &__section-hero {
+        width: 65%;
+        height: 7rem;
+        background-color: $cream50;
+        border-radius: 1rem;
+        margin: 2rem 0rem 1rem 1rem;
+    }
+
+    &__section-graveyard {
+        width: 25%;
+        height: 7rem;
+        background-color: $cream50;
+        border-radius: 1rem;
+        margin: 2rem 1rem 1rem 1rem;
+    }
+}

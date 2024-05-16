@@ -1,0 +1,53 @@
+.overlay {
+    background-color: $cream;
+    margin: 0 1rem;
+    border-radius: 2rem;
+    display: grid;
+
+    &__txt {
+        width: 15rem;
+        font-size: 1rem;
+        margin: 2rem 17% 5rem 17%;
+        text-align: center;
+    }
+
+    &__plusde18button {
+        margin: 1rem;
+    }
+
+    &__img {
+        width: 7rem;
+        // height: 2rem;
+        margin: 4rem 35% 0 35%;
+    }
+
+    &__morethan18button {
+        font-family: 'oswald';
+        font-size: 1.5rem;
+        font-weight: bold;
+        background-color: $yellow;
+        border-radius: 1.5rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 4rem;
+        border: 0.1rem solid black;
+        margin-bottom: 3rem;
+    }
+
+    &__morethan18button2 {
+        font-family: 'oswald';
+        font-size: 1.5rem;
+        font-weight: bold;
+        background-color: $yellow70;
+        border-radius: 1.5rem;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+        height: 4rem;
+        border: 0.1rem solid black;
+        margin-bottom: 1rem;
+    }
+
+
+}
