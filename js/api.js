@@ -6,7 +6,7 @@ async function fetchAllHeroes() {
     for (let id = 1; id <= 4; id++) {
       const apiUrl = `https://www.superheroapi.com/api.php/${apiKey}/${id}`;
       const response = await axios.get(apiUrl);
-      heroes.push(response.data);
+      heroes.push(response.data); 
       console.log(response.data);
     }
     return heroes;
