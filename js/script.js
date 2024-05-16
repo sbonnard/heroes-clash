@@ -12,15 +12,6 @@ let selectedHeroes = [];
 const suggestions = document.getElementById('suggestions');
 //ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
-<<<<<<< HEAD
-
-
-
-function createRemoveBtn() {
-    heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
-}
-
-=======
 // array showing hero(under name of ttl suggestions)
 
 const infoIcon = document.getElementById('info-icon');
@@ -28,7 +19,6 @@ const infoIcon = document.getElementById('info-icon');
 const overlay = document.querySelector('.js-caracteristics');
 
 let allHerosArray = [];
->>>>>>> master
 
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
@@ -55,14 +45,9 @@ function fillHeroTemplate(hero) {
     return clone
 }
 
-<<<<<<< HEAD
-function addRandomValueToNullData(){
-    
-=======
 
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
->>>>>>> master
 }
 
 
