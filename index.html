@@ -11,7 +11,8 @@
 
 <body>
     <header class="header">
-        <a aria-label="link" href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
+        <a href="./account.html"><img class="header__logo--l" src="img/Logo.png" alt=""></a>
+        <a href="./account.html"><img class="header__logo--profilemenu" src="img/profilemenu.png" alt=""></a>
     </header>
     <main>
 
@@ -31,6 +32,10 @@
             <div class="suggestions" id="suggestions"></div>
         </section>
 
+        <!-- ? ============================= -->
+        <!-- ! BARRE DE RECHERCHE -->
+        <!-- ? ============================= -->
+
 
 
         <!-- ? ============================= -->
@@ -47,6 +52,9 @@
             </ul>
         </section>
 
+        <!-- ? ============================= -->
+        <!-- ! Suggestions aléatoires des Héros -->
+        <!-- ? ============================= -->
 
 
         <!-- ? ============================= -->
@@ -66,15 +74,15 @@
         </section>
 
         <!-- ? ============================= -->
+
         <!-- ! Bouton pour passer a l'étapee de pari -->
         <!-- ? ============================= -->
         <button class="start-fight startfightbutton" aria-label="gambling" type="button" id="gambling">Etape
             Suivante!!!</button>
+
         <!-- ! DECK -->
         <!-- ? ============================= -->
 
-        <div>-----------------------------------------------------</div>
-        <!-- showing all heros -->
 
             <ol id="show-fight-result"></ol>
             <p id="show-fight-table"></p>
@@ -88,16 +96,18 @@
                 <div class="sectionheader sectionheader--blue">
                     <h2 class="ttl">Votre pari</h2>
                 </div>
-                <p class="">Montant du pari :</p>
+    
+                <div class="flex">
+                    <ul class="flex" id="selectedItemsList"></ul>
+                </div>
+                <ul id="Selected-hero"> </ul>
+                <button class="cimetierre-back-to-game" aria-label="" type="button" id="">Retour à l'arène</button>
+        </section>
 
-                <button class="start-fight startfightbutton" aria-label="start fight" type="button"
-                    id="start-fight">Lancer le combat</button>
-
-            </section>
 
     </main>
 
-    <template id="heroes-template">
+
             <li class="js-hero-card flex hero">
                 <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
                 <!-- <button class="button--minus" data-favourite-minus=""></button> -->
@@ -120,6 +130,7 @@
                     <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
                 </div>
             </section>
+
     </template>
 
 
@@ -154,9 +165,9 @@
             <h6 class="footer__ttl">Aide</h6>
             <nav>
                 <ul>
-                    <li class="footer__lnk"><a href="">Méthodes de paiments</a></li>
-                    <li class="footer__lnk"><a href="">Guide utilisateur</a></li>
-                    <li class="footer__lnk"><a href="">Support</a></li>
+                    <li><a href="">Méthodes de paiments</a></li>
+                    <li><a href="">Guide utilisateur</a></li>
+                    <li><a href="">Support</a></li>
                 </ul>
             </nav>
         </section>
@@ -164,25 +175,24 @@
             <h6 class="footer__ttl">A propos</h6>
             <nav>
                 <ul>
-                    <li class="footer__lnk"><a href="">La compagnie</a></li>
-                    <li class="footer__lnk"><a href="">Conditions générales d’utilisation</a></li>
-                    <li class="footer__lnk"><a href="">Site map</a></li>
+                    <li><a href="">La compagnie</a></li>
+                    <li><a href="">Conditions générales d’utilisation</a></li>
+                    <li><a href="">Site map</a></li>
                 </ul>
             </nav>
         </section>
         <section class="footer__regle">
-            <img src="img/logo-18+.png" alt="" class="footer__regle-img">
-            <p class="footer__regle-txt">Les jeux de hasard et
+            <img src="img/logo-18+.png" alt="">
+            <p class="footer__regle-txt" >Les jeux de hasard et
                 d’argent sont interdits
-                <br>aux mineurs
-            </p>
+                aux mineurs</p>
         </section>
         <section class="footer__a-propos">
             <h6 class="footer__ttl">Données Personnelles</h6>
             <nav>
                 <ul>
-                    <li class="footer__lnk"><a href="">Paramètres des cookies</a></li>
-                    <li class="footer__lnk"><a href="">Politique de Confidentialité</a></li>
+                    <li><a href="">Paramètres des cookies</a></li>
+                    <li><a href="">Politique de Confidentialité</a></li>
                 </ul>
             </nav>
         </section>
