@@ -11,7 +11,7 @@
 
 <body>
     <header class="header">
-        <a href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
+        <a aria-label="link" href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
     </header>
     <main>
 
@@ -68,20 +68,13 @@
         <!-- ? ============================= -->
         <!-- ! Bouton pour passer a l'étapee de pari -->
         <!-- ? ============================= -->
-        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">Etape
+        <button class="start-fight startfightbutton" aria-label="gambling" type="button" id="gambling">Etape
             Suivante!!!</button>
         <!-- ! DECK -->
         <!-- ? ============================= -->
 
         <div>-----------------------------------------------------</div>
         <!-- showing all heros -->
-
-        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now
-            start fight </button>
-
-            </ul>
-            <button class="start-fight nextstep" aria-label="start fight" type="button" id="gambling">Etape
-                suivante</button>
 
             <ol id="show-fight-result"></ol>
             <p id="show-fight-table"></p>
@@ -105,8 +98,7 @@
     </main>
 
     <template id="heroes-template">
-        <div class="flex">
-            <li class="js-hero-card hero">
+            <li class="js-hero-card flex hero">
                 <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
                 <!-- <button class="button--minus" data-favourite-minus=""></button> -->
                 <a href="#caracteristics" id="info-icon">
@@ -128,7 +120,6 @@
                     <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
                 </div>
             </section>
-        </div>
     </template>
 
 
