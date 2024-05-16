@@ -115,18 +115,18 @@ function listenToHeroes(targetClass, handle) {
 }
 
 function handleClickHero(e) {
-    // Add to selected list and array
-    selectedItemsList.appendChild(e.target.parentNode);
-    let character = searchByheroName(e.target.dataset.name); // Use e.target
-    selectedHeroes.push(character);
-    console.log("1");
+    let li = e.target.parentNode;
+
+    if (li.parentNode === selectedItemsList) {
+        allHeros.appendChild(li);
+    } else if (li.parentNode === allHeros) {
+        selectedItemsList.appendChild(li);
+    }
 }
 
 
-
-
 //listen to heros
-listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+// listenToHeroes('#all-heros .js-hero-card', handleClickHero);
 // listenToHeroes('#selectedItemsList .js-hero-card', handleSelectedClickHero);
 
 
@@ -361,7 +361,7 @@ async function fetchAllHeroes() {
         }
         console.log(heroes);
         //listen to click in all heros (suggestions)
-        listenToHeroes()
+        listenToHeroes('#all-heros .js-hero-card', handleClickHero);
 
 
         return heroes;
