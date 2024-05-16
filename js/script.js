@@ -1,15 +1,22 @@
-import Heroes from "/json/api-heroes.json" with {type: "json" }
+// import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 
 const characters = []
 
 const inputField = document.getElementById('inputField');
+//ul shows the selected heros (li);
 const selectedItemsList = document.getElementById('selectedItemsList');
+// array shows the selected heros (json);
+let selectedHeroes = [];
+//search bar
 const suggestions = document.getElementById('suggestions');
+//ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
+// array showing hero(under name of ttl suggestions)
+let allHerosArray = [];
+
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
-let selectedHeroes = [];
 
 /**
  * Create a template and loads informations about the hero.
@@ -21,13 +28,25 @@ function fillHeroTemplate(hero) {
     clone.querySelector('.js-favourite-hero').innerText = hero.name;
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-hero-img').src = hero.images.md;
+    clone.querySelector('.js-hero-img').src = hero.image.url;
     return clone
 }
 
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
 }
+
+/**
+ * show list of here in page by creating li trmplates
+ * @param {object} hero un object of hero.
+ */
+function showHeros(hero) {
+    let clone = fillHeroTemplate(hero);
+    allHeros.appendChild(clone);
+
+}
+
+
 
 inputField.addEventListener('keyup', function (event) {
     const inputText = inputField.value.trim();
@@ -42,9 +61,9 @@ inputField.addEventListener('keyup', function (event) {
             newHero.addEventListener('click', function () {
                 selectedHeroes.push(hero);
                 let clone = fillHeroTemplate(hero);
-                clone.querySelector('.button--minus').addEventListener('click', function (event) {
-                    event.target.parentNode.remove();
-                });
+                // clone.querySelector('.button--minus').addEventListener('click', function (event) {
+                //     event.target.parentNode.remove();
+                // });
                 selectedItemsList.appendChild(clone);
                 newHero.remove();
             });
@@ -57,6 +76,141 @@ inputField.addEventListener('keyup', function (event) {
     }
 });
 
+
+
+
+
+
+
+/**
+ * show serial number of heroes. see showHeros()function
+ * @param {number} start the shown Start.
+ * @param {number} end the show end 
+ * @param {array} data array of object heros
+ * @returns 
+ */
+function showNOfHeros(start, end, data) {
+    if (start < 0) { start = 0; }
+    if (end > Heroes.length) { end = Heroes.length }
+    for (start; start < end; start++) {
+        showHeros(data[start])
+        //add hero to array
+        allHerosArray.push(data[start])
+
+    }
+    return data[start]
+
+}
+
+
+/**
+ * listen to the click in heros list then handle the event see  handleClickHero(e) function
+ * @param {*} targetClass 
+ */
+function listenToHeroes(targetClass, handle) {
+    const allHeroes = document.querySelectorAll(targetClass);
+    allHeroes.forEach(hero => {
+        hero.addEventListener("click", handle);
+    });
+}
+
+function handleClickHero(e) {
+    // Add to selected list and array
+    selectedItemsList.appendChild(e.target.parentNode);
+    let character = searchByheroName(e.target.dataset.name); // Use e.target
+    selectedHeroes.push(character);
+    console.log("1");
+}
+
+
+
+
+//listen to heros
+listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+// listenToHeroes('#selectedItemsList .js-hero-card', handleSelectedClickHero);
+
+
+function handleSelectedClickHero(e) {
+    console.log("2")
+    console.log(e)
+}
+
+
+
+
+/**
+ * search by hero name
+ * @param {string} heroName 
+ * @returns {object} return hero if it was found it otherwise returns null 
+ */
+function searchByheroName(heroName) {
+    if (heroName !== '') {
+        return Heroes.find(hero => {
+            return hero.name.includes(heroName);
+        });
+    }
+
+    return null;
+}
+
+
+
+/**
+ * starts fight
+ * @returns 
+ */
+function startFight() {
+    if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
+
+    const showBattleTable = document.getElementById('show-fight-result');
+    showBattleTable.innerText = startBattleRoyalInterval(characters)
+
+}
+
+
+// //show 10 of heros
+// showNOfHeros(0, 4, Heroes)
+
+
+
+//button to start fight
+document.getElementById("start-fight").addEventListener("click", () => {
+    startFight()
+    console.log(characters)
+
+})
+
+
+
+
+/**
+ * show an hero by inject a html template in target html
+ * @param {object} hero object of heros has properties like name, strenght,..
+ * @param {text} altImg alt image of the element
+ * @param {text} templateId template id in text format
+ * @param {text} targetId target id in in text format
+ */
+function showingHeroCard(hero, altImg, templateId, targetId) {
+    const templateName = document.getElementById(templateId);
+    let clone = document.importNode(templateName.content, true);
+    const target = document.getElementById(targetId);
+    clone.querySelector('.js-name').innerText = hero.name;
+    clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-combat').innerTextt = hero.combat;
+    clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
+    clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
+    clone.querySelector('.js-img').src = hero.image.url;
+    clone.querySelector('.js-img').alt = altImg;
+    target.appendChild(clone);
+}
+
+
+
+
+
+
+//figth codes
 
 /**
  * Return a random value between 0 and a chosen number.
@@ -168,172 +322,56 @@ function burnTheDead(charactersArray) {
 }
 
 
-/**
- * Fight until only 1 remains
- * @param {array} characterArray -The array with all our characters
- * @return {object} -The winner's object
- */
-function startBattleRoyalInterval(characterArray) {
+// /**
+//  * Fight until only 1 remains
+//  * @param {array} characterArray -The array with all our characters
+//  * @return {object} -The winner's object
+//  */
+// function startBattleRoyalInterval(characterArray) {
 
-    const timer = setInterval(() => {
-        const challengers = getChallengers(characterArray);
-        showFightResult.innerText = fight(challengers)
-        characterArray = burnTheDead(characterArray);
+//     const timer = setInterval(() => {
+//         const challengers = getChallengers(characterArray);
+//         showFightResult.innerText = fight(challengers)
+//         characterArray = burnTheDead(characterArray);
 
-        if (characterArray.length === 1) {
-            clearInterval(timer);
-            console.table(characterArray[0]);
+//         if (characterArray.length === 1) {
+//             clearInterval(timer);
+//             console.table(characterArray[0]);
+//         }
+//     }, 1000);
+// }
+
+
+
+////////////////////////////
+
+// `https://www.superheroapi.com/api.php/${apiKey}/search/${query}?maxResults=${maxResults}&startIndex=${startIndex}`
+
+const apiKey = '3e85eda0169c3aa450196a790ac1966f';
+
+async function fetchAllHeroes() {
+    try {
+        const heroes = [];
+        for (let i = 1; i <= 4; i++) {
+            let id = getRandomValue(731);
+            const apiUrl = `https://www.superheroapi.com/api.php/${apiKey}/${id}`;
+            const response = await axios.get(apiUrl);
+            showHeros(response.data)
+            heroes.push(response.data);
         }
-    }, 1000);
-}
+        console.log(heroes);
+        //listen to click in all heros (suggestions)
+        listenToHeroes()
 
 
-
-
-
-/**
- * show list of here in page by creating li trmplates
- * @param {object} hero un object of hero.
- */
-function showHeros(hero) {
-    let clone = fillHeroTemplate(hero);
-    allHeros.appendChild(clone);
-
-}
-
-/**
- * show serial number of heroes. see showHeros()function
- * @param {number} start the shown Start.
- * @param {number} end the show end 
- * @param {array} data array of object heros
- * @returns 
- */
-function showNOfHeros(start, end, data) {
-    if (start < 0) { start = 0; }
-    if (end > Heroes.length) { end = Heroes.length }
-    for (start; start < end; start++) {
-        showHeros(data[start])
+        return heroes;
     }
-    return data[start]
-
-}
-
-
-/**
- * listen to the click in heros list then handle the event see  handleClickHero(e) function
- * @param {*} targetClass 
- */
-function listenToHeroes(targetClass) {
-    const allheroes = document.querySelectorAll(targetClass)
-
-    allheroes.forEach(hero => {
-        hero.addEventListener("click", handleClickHero);
-    });
-
-}
-
-
-
-
-function handleClickHero(e) {
-    selectedHeroes.push(e.target.parentNode);
-    showSelectedHeros(selectedHeroes);
-
-}
-
-
-/**
- * get the list of herers (li selected hero) and search by name to get the hero in json format and push it in characters list 
- * @param {*} heroes 
- */
-function showSelectedHeros(heroes) {
-    heroes.forEach(hero => {
-        selectedItemsList.appendChild(hero);
-        let character = searchByheroName(hero.dataset.name)
-        characters.push(character)
-
-    });
-}
-
-
-
-/**
- * search by hero name
- * @param {string} heroName 
- * @returns {object} return hero if it was found it otherwise returns null 
- */
-function searchByheroName(heroName) {
-    if (heroName !== '') {
-        return Heroes.find(hero => {
-            return hero.name.includes(heroName);
-        });
+    catch (error) {
+        console.error('Error fetching heroes:', error);
+        return null;
     }
 
-    return null;
-}
-
-
-
-
-/**
- * starts fight
- * @returns 
- */
-function startFight() {
-    if (characters.length < 2) { console.log("At least you must choose dew heros"); return }
-
-    const showBattleTable = document.getElementById('show-fight-result');
-    showBattleTable.innerText = startBattleRoyalInterval(characters)
 
 }
 
-
-//show 10 of heros
-showNOfHeros(0, 10, Heroes)
-
-//listen to heros
-listenToHeroes('.js-hero-card')
-
-//button to start fight
-document.getElementById("start-fight").addEventListener("click", () => {
-    startFight()
-    console.log(characters)
-
-})
-
-
-
-
-/**
- * show an hero by inject a html template in target html
- * @param {object} hero object of heros has properties like name, strenght,..
- * @param {text} altImg alt image of the element
- * @param {text} templateId template id in text format
- * @param {text} targetId target id in in text format
- */
-function showingHeroCard(hero, altImg, templateId, targetId) {
-    const templateName = document.getElementById(templateId);
-    let clone = document.importNode(templateName.content, true);
-    const target = document.getElementById(targetId);
-    console.log(clone)
-    clone.querySelector('.js-name').innerText = hero.name;
-    clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
-    clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-combat').innerTextt = hero.combat;
-    clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
-    clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
-    // clone.querySelector('.js-img').src = hero.images.md;
-    // clone.querySelector('.js-img').alt = altImg;
-    target.appendChild(clone);
-}
-
-
-
-selectedItemsList.addEventListener("click", handleClickedSelected)
-
-function handleClickedSelected(e) {
-    console.log(e.target.parentNode);
-    allHeros.appendChild(e.target.parentNode);
-    e.target.parentNode.remove()
-
-}
+fetchAllHeroes();

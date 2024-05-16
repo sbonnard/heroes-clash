@@ -25,7 +25,8 @@
                 <h1 class="ttl--h1">Choisis tes Héros</h1>
             </label>
 
-            <input class="input" type="text" id="inputField" name="inputField" placeholder="Batman" aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+            <input class="input" type="text" id="inputField" name="inputField" placeholder="Batman"
+                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
 
             <div class="suggestions" id="suggestions"></div>
         </section>
@@ -42,7 +43,7 @@
                 <h2>Suggestions :</h2>
             </div>
 
-            <ul id="all-heros" class="flex">
+            <ul id="all-heros" class="container__cards">
             </ul>
         </section>
 
@@ -65,9 +66,19 @@
         </section>
 
         <!-- ? ============================= -->
+<<<<<<< HEAD
         <!-- ! Bouton pour passer a l'étapee de pari -->
         <!-- ? ============================= -->   
         <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">Etape Suivante!!!</button>
+=======
+        <!-- ! DECK -->
+        <!-- ? ============================= -->
+
+
+        <button class="start-fight startfightbutton" aria-label="start fight" type="button" id="start-fight">for now start
+            fight </button>
+
+>>>>>>> master
         <ol id="show-fight-result"></ol>
         <p id="show-fight-table"></p>
 
@@ -78,19 +89,21 @@
         <li class="js-hero-card hero">
             <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
             <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+            <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations" aria-label="Obtenir des informations complémentaires sur le héros">
             <img class="js-hero-img hero__img" src="" alt="">
             <h2 class="js-favourite-hero hero__name">Patate</h2>
             <p class="js-attack hero__attack">25</p>
             <p class="js-pv hero__pv">25</p>
+            <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
         </li>
     </template>
 
 
-        <!-- show fighters card -->
-        <div id="attacker" class="js-attacker">
-        </div>
-        <div id="defender" class="js-defender">
-        </div>
+    <!-- show fighters card -->
+    <div id="attacker" class="js-attacker">
+    </div>
+    <div id="defender" class="js-defender">
+    </div>
 
     <!-- General template-->
     <template id="fight-template">
@@ -103,17 +116,53 @@
         <img class=".js-img" src="" alt="fighter">
     </template>
 
-    
+
 
     <!-- <template id="fight-template">
         <li class="js-fight-element">
             <p class="js-fight-txt"></p>
         </li>
     </template> -->
-    <footer>
+    <footer class="footer">
+        <section class="footer__section footer__aide">
+            <h6 class="footer__ttl">Aide</h6>
+            <nav>
+                <ul>
+                    <li><a href="">Méthodes de paiments</a></li>
+                    <li><a href="">Guide utilisateur</a></li>
+                    <li><a href="">Support</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="footer__a-propos">
+            <h6 class="footer__ttl">A propos</h6>
+            <nav>
+                <ul>
+                    <li><a href="">La compagnie</a></li>
+                    <li><a href="">Conditions générales d’utilisation</a></li>
+                    <li><a href="">Site map</a></li>
+                </ul>
+            </nav>
+        </section>
+        <section class="footer__regle">
+            <img src="img/logo-18+.png" alt="">
+            <p class="footer__regle-txt" >Les jeux de hasard et
+                d’argent sont interdits
+                aux mineurs</p>
+        </section>
+        <section class="footer__a-propos">
+            <h6 class="footer__ttl">Données Personnelles</h6>
+            <nav>
+                <ul>
+                    <li><a href="">Paramètres des cookies</a></li>
+                    <li><a href="">Politique de Confidentialité</a></li>
+                </ul>
+            </nav>
+        </section>
     </footer>
 
     <script type="module" src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </body>
 
