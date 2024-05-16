@@ -359,10 +359,10 @@ async function fetchAllHeroes() {
             showHeros(response.data)
             heroes.push(response.data);
         }
-
         console.log(heroes);
+        //listen to click in all heros (suggestions)
+        listenToHeroes()
 
-       
 
         return heroes;
     }
