@@ -13,6 +13,11 @@ const suggestions = document.getElementById('suggestions');
 //ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
 // array showing hero(under name of ttl suggestions)
+
+const infoIcon = document.getElementById('info-icon');
+
+const overlay = document.querySelector('.js-caracteristics');
+
 let allHerosArray = [];
 
 const heroesTemplate = document.getElementById("heroes-template");
@@ -29,8 +34,17 @@ function fillHeroTemplate(hero) {
     clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
     clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
     clone.querySelector('.js-hero-img').src = hero.image.url;
+
+    // Fill caracteristics cards
+    clone.querySelector('.js-favourite-hero-caracteristics').innerText = hero.name;
+    // clone.querySelector('.js-favourite-hero-universe').innerText = hero.biography.publisher;
+    clone.querySelector('.js-caracteristics-atk').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-caracteristics-pv').innerText = hero.powerstats.durability;
+    clone.querySelector('.js-caracteristics-speed').innerText = hero.powerstats.speed;
+
     return clone
 }
+
 
 function createRemoveBtn() {
     heroesTemplate.content.createElement('button', ".button--minus", "[data-favourite-minus]")
@@ -358,14 +372,22 @@ async function fetchAllHeroes() {
             const response = await axios.get(apiUrl);
             showHeros(response.data)
             heroes.push(response.data);
+
         }
         console.log(heroes);
         //listen to click in all heros (suggestions)
         listenToHeroes()
 
+        infoIcon.addEventListener('click', function () {
+            this.classList.toggle("close");
+            overlay.classList.toggle("overlay");
+        });
 
         return heroes;
     }
+
+
+
     catch (error) {
         console.error('Error fetching heroes:', error);
         return null;
@@ -375,3 +397,5 @@ async function fetchAllHeroes() {
 }
 
 fetchAllHeroes();
+
+

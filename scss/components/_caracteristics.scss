@@ -1,0 +1,31 @@
+.caracteristics {
+    background-color: $cream;
+    width: 7.875rem;
+
+    &__ttl {
+        background-color: $blue66;
+        padding: 0.5rem;
+    }
+
+    &__menu {
+        z-index: 1;
+        min-width: 100%;
+        min-height: 22.5rem;
+        position: fixed;
+        top: 5rem;
+        left: 0;
+        height: 0;
+        visibility: hidden;
+        opacity: 0;
+        text-align: center;
+        padding-top: 1.25rem;
+        transition: all 0.3s ease-in-out;
+
+        &.overlay {
+            visibility: visible;
+            opacity: 1;
+            background: var(--black75);
+            line-height: 4;
+        }
+    }
+}
