@@ -5,37 +5,65 @@
     flex-direction: column;
     justify-content: center;
     text-transform: uppercase;
+    align-items: center;
     color: $cream;
+    position: relative;
+    width: 100%;
+    padding: 0 0 2rem 0;
 
     &__frame {
-        width: 50%;
-        position: absolute;
-        z-index: 1;
-
+        width: 75%;
+        z-index: 10;
     }
 
     &__name {
-        position: relative;
-        font-size: 1.125rem;
-        z-index: 10;
-        bottom: 4.25rem;
+        position: absolute;
+        font-size: 1rem;
+        z-index: 100;
+        bottom: 41%;
     }
 
     &__attack {
-        position: relative;
+        position: absolute;
+        font-size: 1rem;
         z-index: 10;
-
+        top: 10%;
+        left: 19%;
+        text-shadow: 0 2px $black50;
+        width: 30px;
+        text-align: center;
     }
 
     &__pv {
-        position: relative;
-        z-index: 10;
+        font-size: 1.5rem;
+        position: absolute;
+        z-index: 5;
+        bottom: 8.5%;
+        text-shadow: 0 2px $black50;
+        width: 50px;
+        height: 50px;
+        text-align: center;
     }
 
     &__img {
-        position: relative;
-        width: 50%;
-        // mask-image: url(/img/card-mask.png);
+        position: absolute;
+        width: 75%;
+        top: 0%;
+        mask-image: url(/img/mask.svg);
+        mask-repeat: no-repeat;
+    }
+
+    &__health-bar {
+        position: absolute;
+        width: 20%;
+        bottom: 21%;
+    }
+
+    &__infos {
+        position: absolute;
+        z-index: 20;
+        top: 0;
+        right: 12%;
     }
 
 }

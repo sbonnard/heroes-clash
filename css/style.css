@@ -94,6 +94,11 @@ body {
   margin: 1.75rem;
   border-radius: 2rem;
 }
+.container__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0.5rem 0;
+}
 
 .flex {
   display: flex;
@@ -108,12 +113,17 @@ body {
 
 /* Input */
 .input {
-  width: 100%;
+  width: 90%;
   height: 2.5rem;
-  border-radius: 20%;
+  border-radius: 2rem;
   background-image: url(/img/search.png);
   background-size: cover;
   background-position: left;
+  padding-left: 3rem;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-family: "oswald";
+  font-size: 1rem;
 }
 
 .background {
@@ -126,37 +136,61 @@ body {
   flex-direction: column;
   justify-content: center;
   text-transform: uppercase;
+  align-items: center;
   color: #FBF5E8;
+  position: relative;
+  width: 100%;
 }
 .hero__frame {
-  width: 50%;
-  position: absolute;
-  z-index: 1;
+  width: 75%;
+  z-index: 10;
 }
 .hero__name {
-  position: relative;
+  position: absolute;
   font-size: 1.125rem;
-  z-index: 10;
-  bottom: 4.25rem;
+  z-index: 100;
+  bottom: 30%;
 }
 .hero__attack {
-  position: relative;
+  position: absolute;
+  font-size: 1rem;
   z-index: 10;
+  top: 11%;
+  left: 19%;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+  width: 30px;
+  text-align: center;
 }
 .hero__pv {
-  position: relative;
-  z-index: 10;
+  font-size: 1.5rem;
+  position: absolute;
+  z-index: 5;
+  bottom: -9%;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+  width: 50px;
+  height: 50px;
+  text-align: center;
 }
 .hero__img {
-  position: relative;
-  width: 50%;
+  position: absolute;
+  width: 75%;
+  top: 0%;
+  -webkit-mask-image: url(/img/mask.svg);
+          mask-image: url(/img/mask.svg);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+.hero__health-bar {
+  position: absolute;
+  width: 20%;
+  bottom: 5%;
 }
 
 .sectionheader {
   border-radius: 2rem;
   padding-top: 1rem;
   padding-bottom: 0.8rem;
-  padding-left: 1rem;
+  padding-left: 1.5rem;
   font-family: oswald;
   color: #FBF5E8;
   font-size: 1.2rem;
@@ -174,32 +208,74 @@ body {
   flex-direction: column;
   justify-content: center;
   text-transform: uppercase;
+  align-items: center;
   color: #FBF5E8;
+  position: relative;
+  width: 100%;
 }
 .hero__frame {
-  width: 50%;
-  position: absolute;
-  z-index: 1;
+  width: 75%;
+  z-index: 10;
 }
 .hero__name {
-  position: relative;
+  position: absolute;
   font-size: 1.125rem;
-  z-index: 10;
-  bottom: 4.25rem;
+  z-index: 100;
+  bottom: 30%;
 }
 .hero__attack {
-  position: relative;
+  position: absolute;
+  font-size: 1rem;
   z-index: 10;
+  top: 11%;
+  left: 19%;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+  width: 30px;
+  text-align: center;
 }
 .hero__pv {
-  position: relative;
-  z-index: 10;
+  font-size: 1.5rem;
+  position: absolute;
+  z-index: 5;
+  bottom: -9%;
+  text-shadow: 0 3px rgba(1, 1, 1, 0.5);
+  width: 50px;
+  height: 50px;
+  text-align: center;
 }
 .hero__img {
-  position: relative;
-  width: 50%;
+  position: absolute;
+  width: 75%;
+  top: 0%;
+  -webkit-mask-image: url(/img/mask.svg);
+          mask-image: url(/img/mask.svg);
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+}
+.hero__health-bar {
+  position: absolute;
+  width: 20%;
+  bottom: 5%;
 }
 
 .ttl {
   color: #FBF5E8;
+}
+.ttl--h1 {
+  color: #FBF5E8;
+  font-size: 2rem;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.startfightbutton {
+  border-radius: 1rem;
+  background-color: #FFC90A;
+  font-family: "oswald";
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }/*# sourceMappingURL=style.css.map */
