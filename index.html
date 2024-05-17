@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,71 +11,81 @@
 
 <body>
     <header class="header">
-        <a href="./index.html"><img class="header__logo--l" src="img/Logo.png" alt=""></a>
-        <a href="./account.html"><img class="header__logo--profilemenu" src="img/profilemenu.png" alt=""></a>
+        <a aria-label="link" href="./account.html"><img class="header__logo" src="img/principal.webp" alt=""></a>
     </header>
     <main>
 
-        <!-- ? ============================= -->
-        <!-- ! BARRE DE RECHERCHE -->
-        <!-- ? ============================= -->
 
-        <section aria-labelledby="inputFieldLabel flex">
+        <!-- //hide main when fight start -->
+        <div id="hide-main" class="content">
+            <!-- ? ============================= -->
+            <!-- ! BARRE DE RECHERCHE -->
+            <!-- ? ============================= -->
 
-            <label class="input__label" for="inputField" id="inputFieldLabel">
-                <h1 class="ttl--h1">Choisis tes Héros</h1>
-            </label>
+            <section aria-labelledby="inputFieldLabel flex">
 
-            <input class="input" type="text" id="inputField" name="inputField" placeholder="Batman"
-                aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
+                <label class="input__label" for="inputField" id="inputFieldLabel">
+                    <h1 class="ttl--h1">Choisis tes Héros</h1>
+                </label>
 
-            <div class="suggestions" id="suggestions"></div>
-        </section>
+                <!-- // test get function -->
+                <input class="input" type="text" id="inputField" name="inputField" placeholder="Batman"
+                    aria-label="Tape quelque chose et nous te listerons les héros disponibles !">
 
-
-
-        <!-- ? ============================= -->
-        <!-- ! Suggestions aléatoires des Héros -->
-        <!-- ? ============================= -->
-
-        <section class="container background">
-
-            <div class="sectionheader sectionheader--blue">
-                <h2>Suggestions :</h2>
-            </div>
-
-            <ul id="all-heros" class="container__cards">
-            </ul>
-        </section>
+                <div class="suggestions" id="suggestions"></div>
+            </section>
 
 
 
-        <!-- ? ============================= -->
-        <!-- ! DECK -->
-        <!-- ? ============================= -->
 
-        <section class="container background">
+            <!-- ? ============================= -->
+            <!-- ! Suggestions aléatoires des Héros -->
+            <!-- ? ============================= -->
 
-            <div class="sectionheader sectionheader--red">
-                <h2 class="ttl">Votre Deck</h2>
-            </div>
+            <section class="container background">
 
-            <div class="flex">
-                <ul class="container__cards" id="selectedItemsList"></ul>
-            </div>
-            <ul id="Selected-hero"> </ul>
-        </section>
+                <div class="sectionheader sectionheader--blue">
+                    <h2>Suggestions :</h2>
+                </div>
 
-        <!-- ? ============================= -->
-        <!-- ! Bouton pour passer a l'étapee de pari -->
-        <!-- ? ============================= -->
-        <button class="start-fight startfightbutton" aria-label="gambling" type="button" id="gambling">Etape
-            Suivante!!!</button>
-        <!-- ! DECK -->
-        <!-- ? ============================= -->
+                <ul id="all-heros" class="container__cards">
+                </ul>
+            </section>
 
-        <div>-----------------------------------------------------</div>
-        <!-- showing all heros -->
+
+
+            <!-- ? ============================= -->
+            <!-- ! DECK -->
+            <!-- ? ============================= -->
+
+            <section class="container background">
+
+                <div class="sectionheader sectionheader--red">
+                    <h2 class="ttl">Votre Deck</h2>
+                </div>
+
+                <div class="flex">
+                    <ul class="container__cards" id="selectedItemsList"></ul>
+                </div>
+                <!-- // we can delete it? -->
+                <ul id="Selected-hero"> </ul>
+            </section>
+
+            <!-- ? ============================= -->
+            <!-- ! Bouton pour passer a l'étapee de pari -->
+            <!-- ? ============================= -->
+            <button class="start-fight startfightbutton" aria-label="gambling" type="button" id="gambling">Etape
+                Suivante!!!</button>
+            <!-- ! DECK -->
+            <!-- ? ============================= -->
+
+            <div>-----------------------------------------------------</div>
+            <!-- showing all heros -->
+
+
+
+
+
 
             <ol id="show-fight-result"></ol>
             <p id="show-fight-table"></p>
@@ -93,86 +102,76 @@
                 <p class="">Montant du pari :</p>
 
                 <button class="start-fight startfightbutton" aria-label="start fight" type="button"
-                    id="start-fight">Lancer le combat</button>
+                    id="start-fight">Lancer
+                    le combat</button>
 
             </section>
-        <section class="overlay">
-            <img src="img/logo-18+.png" alt="" class="overlay__img">
-                <p class="overlay__txt">Les jeux de hasard et d’argent sont interdits aux mineurs</p>
-                    <button class="start-fight overlay__morethan18button2">J'ai plus de 18 ans</button>
-                    <button class="start-fight overlay__morethan18button">J'ai moins de 18 ans</button>
-        </section>
 
-        <section class="arena">
-            <img src="./img/heroes-clash.ico.ico" alt="" class="arena__logo">
-            <div>
-                <img src="./img/defender-background.png" alt="" class="arena__defender">
-                <ul></ul>
-            </div>
-            <div>
-                <img src="./img/attacker-background.png" alt="" class="arena__attacker">
-                <ul></ul>
-            </div>
-            <div class="arena__bottom-section">
-                <div class="arena__section-hero"><ul></ul></div>
-                <div class="arena__section-graveyard"><ul></ul></div>
-            </div>
-        </section>
+        </div>
+        <!-- show fighters card -->
+        <div id="attacker" class="js-attacker big-font hidden">
+            <p class="big-font">The Attacker</p>
+        </div>
+        <div id="defender" class="js-defender big-font hidden">
+            <p class="big-font">The defender</p>
+
+        </div>
+        <!-- show winner card -->
+        <div id="the-winner" class="the-winner hidden">
+            <p class="big-font">The Winner is</p>
+
+        </div>
+
 
     </main>
 
     <template id="heroes-template">
-            <li class="js-hero-card flex hero">
-                <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
-                <!-- <button class="button--minus" data-favourite-minus=""></button> -->
-                <a href="#caracteristics" id="info-icon">
-                    <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations"
-                        aria-label="Obtenir des informations complémentaires sur le héros">
-                </a>
-                <img class="js-hero-img hero__img" src="" alt="">
-                <h2 class="js-favourite-hero hero__name">Patate</h2>
-                <p class="js-attack hero__attack">25</p>
-                <p class="js-pv hero__pv">25</p>
-                <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
-            </li>
-            <section class="js-caracteristics caracteristics">
-                <h2 class="js-favourite-hero-caracteristics caracteristics__ttl">Hero Name</h2>
-                <div class="caracteristics__stats">
-                    <p>Univers : <span class="js-caracteristics-universe">0</span></p>
-                    <p>Attaque : <span class="js-caracteristics-atk">0</span></p>
-                    <p>PV : <span class="js-caracteristics-pv">0</span></p>
-                    <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
-                </div>
-            </section>
+        <li class="js-hero-card flex hero">
+            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+            <!-- <button class="button--minus" data-favourite-minus=""></button> -->
+            <a href="#caracteristics" class="js-info-icon">
+                <img class="js-hero-infos hero__infos" src="img/info.png" alt="bouton d'informations"
+                    aria-label="Obtenir des informations complémentaires sur le héros">
+            </a>
+            <img class="js-hero-img hero__img" src="" alt="">
+            <h2 class="js-favourite-hero hero__name">Patate</h2>
+            <p class="js-attack hero__attack">25</p>
+            <p class="js-pv hero__pv">25</p>
+            <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
+        </li>
+        <section class="js-caracteristics caracteristics">
+            <h2 class="js-favourite-hero-caracteristics caracteristics__ttl">Hero Name</h2>
+            <div class="caracteristics__stats">
+                <p>Univers : <span class="js-caracteristics-universe">0</span></p>
+                <p>Attaque : <span class="js-caracteristics-atk">0</span></p>
+                <p>PV : <span class="js-caracteristics-pv">0</span></p>
+                <p>Vitesse : <span class="js-caracteristics-speed">0</span></p>
+            </div>
+        </section>
+
     </template>
 
 
-    <!-- show fighters card -->
-    <div id="attacker" class="js-attacker">
-    </div>
-    <div id="defender" class="js-defender">
-    </div>
 
     <!-- General template-->
     <template id="fight-template">
         <li class="js-hero-card hero">
-            <h2 class="js-name"></h2>
-            <p class="js-durability"></p>
+            <img class="hero__frame" src="img/card-frame.webp" alt="carte de héros">
+            <h2 class="js-name hero__name"></h2>
+            <p class="js-durability hero__pv"></p>
             <p class="js-strength"></p>
-            <p class="js-combat"></p>
-            <p class="js-speed"></p>
-            <p class="js-universe"></p>
-            <img class="js-img" src="" alt="fighter">
+            <!-- <p class="js-combat hero__atk"></p> -->
+            <!-- <p class="js-speed"></p> -->
+            <!-- <p class="js-universe"></p> -->
+            
+            <img class="hero__health-bar" src="img/health-bar.svg" alt="barre de vie">
+            <img class="js-img hero__img" src="" alt="fighter">
         </li>
     </template>
 
 
 
-    <!-- <template id="fight-template">
-        <li class="js-fight-element">
-            <p class="js-fight-txt"></p>
-        </li>
-    </template> -->
+
     <footer class="footer">
         <section class="footer__section footer__aide">
             <h6 class="footer__ttl">Aide</h6>

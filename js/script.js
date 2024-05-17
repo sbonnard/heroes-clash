@@ -1,4 +1,4 @@
-import Heroes from "/json/api-heroes.json" with {type: "json" }
+// import Heroes from "/json/api-heroes.json" with {type: "json" }
 
 
 let characters = []
@@ -7,8 +7,8 @@ const inputField = document.getElementById('inputField');
 //ul shows the selected heros (li);
 const selectedItemsList = document.getElementById('selectedItemsList');
 // array shows the selected heros (json);
-let selectedHeroes = [];
-//search bar
+// let selectedHeroes = [];
+// //search bar
 const suggestions = document.getElementById('suggestions');
 //ul all showing hero(under name of ttl suggestions)
 const allHeros = document.getElementById('all-heros');
@@ -23,42 +23,59 @@ let allHerosArray = [];
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
 
+
+//hide and show class (display)
+
+const attackerTag = document.getElementById("attacker")
+const defenderTag = document.getElementById("defender")
+
+
+
 /**
  * Create a template and loads informations about the hero.
  * @param {object} hero The object from json file.
 */
 function fillHeroTemplate(hero) {
+
     let clone = document.importNode(heroesTemplate.content, true);
     heroDataSet(clone, hero)
-    clone.querySelector('.js-favourite-hero').innerText = hero.name;
-    clone.querySelector('.js-pv').innerText = hero.powerstats.durability;
-    clone.querySelector('.js-attack').innerText = hero.powerstats.strength;
+    clone.querySelector('.js-favourite-hero').innerText = modifyNullValueTxt(hero.name);
+    clone.querySelector('.js-pv').innerText = modifyNullValue(hero.powerstats.durability);
+    clone.querySelector('.js-attack').innerText = modifyNullValue(hero.powerstats.strength);
     clone.querySelector('.js-hero-img').src = hero.image.url;
 
     // Fill caracteristics cards
-    clone.querySelector('.js-favourite-hero-caracteristics').innerText = hero.name;
+    clone.querySelector('.js-favourite-hero-caracteristics').innerText = modifyNullValueTxt(hero.name);
     // clone.querySelector('.js-favourite-hero-universe').innerText = hero.biography.publisher;
-    clone.querySelector('.js-caracteristics-atk').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-caracteristics-pv').innerText = hero.powerstats.durability;
-    clone.querySelector('.js-caracteristics-speed').innerText = hero.powerstats.speed;
+    clone.querySelector('.js-caracteristics-atk').innerText = modifyNullValue(hero.powerstats.strength);
+    clone.querySelector('.js-caracteristics-pv').innerText = modifyNullValue(hero.powerstats.durability);
+    clone.querySelector('.js-caracteristics-speed').innerText = modifyNullValue(hero.powerstats.speed);
 
     return clone
 }
 
+
 function heroDataSet(clone, hero) {
-    clone.querySelector('.js-hero-card').dataset.name = hero.name;
-    clone.querySelector('.js-hero-card').dataset.durability = hero.powerstats.durability;
-    clone.querySelector('.js-hero-card').dataset.strength = hero.powerstats.strength;
-    clone.querySelector('.js-hero-card').dataset.combat = hero.powerstats.combat;
-    clone.querySelector('.js-hero-card').dataset.speed = hero.powerstats.speed;
-    clone.querySelector('.js-hero-card').dataset.universe = hero.powerstats.universe;
+    clone.querySelector('.js-hero-card').dataset.name = modifyNullValueTxt(hero.name);
+    clone.querySelector('.js-hero-card').dataset.durability = modifyNullValue(hero.powerstats.durability);
+    clone.querySelector('.js-hero-card').dataset.strength = modifyNullValue(hero.powerstats.strength);
+    clone.querySelector('.js-hero-card').dataset.combat = modifyNullValue(hero.powerstats.combat);
+    clone.querySelector('.js-hero-card').dataset.speed = modifyNullValue(hero.powerstats.speed);
+    clone.querySelector('.js-hero-card').dataset.universe = modifyNullValue(hero.powerstats.universe);
     clone.querySelector('.js-hero-card').dataset.src = hero.image.url;
 
 }
 
 
+function modifyNullValue(value) {
+    return (value === undefined || value === null || value === 'null') ? getRandomValue(100) : value;
+}
 
 
+function modifyNullValueTxt(name) {
+    return (name === undefined || name === null || name === 'null') ? "Unknown" : name;
+
+}
 
 /**
  * show list of here in page by creating li trmplates
@@ -72,37 +89,20 @@ function showHeros(hero) {
 
 
 
-inputField.addEventListener('keyup', function (event) {
+function getSearchInput() {
     const inputText = inputField.value.trim();
+    console.log(inputText);
     if (inputText !== '') {
         suggestions.innerHTML = "";
-        let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
-
-        testList.forEach(hero => {
-            let newHero = document.createElement('button');
-            newHero.classList.add('js-suggestion', 'suggestions__itm');
-            newHero.setAttribute('id', hero.id);
-            newHero.addEventListener('click', function () {
-                selectedHeroes.push(hero);
-                let clone = fillHeroTemplate(hero);
-                // clone.querySelector('.button--minus').addEventListener('click', function (event) {
-                //     event.target.parentNode.remove();
-                // });
-                selectedItemsList.appendChild(clone);
-                newHero.remove();
-                selectedItemsList.addEventListener("click",handleClickHero)   
-
-});
-            const textItem = document.createTextNode(hero.name);
-            newHero.appendChild(textItem);
-            suggestions.appendChild(newHero);
-
-        });
-    } else {
-        suggestions.innerHTML = '';
     }
-});
+    // else {
+    //     suggestions.children.remove();
+    // }
 
+    return inputText;
+}
+
+getSearchInput()
 
 
 
@@ -129,6 +129,19 @@ function handleClickHero(e) {
         selectedItemsList.appendChild(li);
     }
 }
+
+
+function handleClickSuggestionHero(e) {
+    let li = e.target.parentNode;
+    if (li.parentNode === selectedItemsList) {
+        allHeros.appendChild(li);
+    } else if (li.parentNode === allHeros) {
+        selectedItemsList.appendChild(li);
+    }
+}
+
+
+
 
 
 function constructionHero(liHero) {
@@ -158,13 +171,26 @@ function constructionAllHero(className) {
  * @returns 
  */
 function startFight() {
-    if (characters.length < 2) { console.log("At least you must choose two heros"); return }
-    startBattleRoyalInterval(characters)
-    //  showBattleTable.innerText = startBattleRoyalInterval(characters)
-    // const showBattleTable = document.getElementById('show-fight-result');
+    console.log('Selected characters:', characters);
+    if (characters.length < 2) {
+        console.log("At least you must choose two heroes");
+        return;
+    }
+    startBattleRoyalInterval(characters);
 }
 
 
+function displayAttackerAndDefender(attackerTag,defenderTag,attacker, defender) {
+    // First, make sure the elements are not hidden
+    attackerTag.classList.remove("hidden");
+    defenderTag.classList.remove("hidden");
+    attackerTag.innerHTML = '';
+    defenderTag.innerHTML = '';
+    // Show attacker and defender info
+    showingHeroCard(attacker, "attacker", "fight-template", "attacker");
+    showingHeroCard(defender, "defender", "fight-template", "defender");
+    
+   }
 
 
 /**
@@ -178,13 +204,14 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
     const templateName = document.getElementById(templateId);
     let clone = document.importNode(templateName.content, true);
     const target = document.getElementById(targetId);
-    // heroDataSet(clone, hero)
-    clone.querySelector('.js-name').innerText = hero.name;
-    clone.querySelector('.js-durability').innerText = hero.powerstats.durability;
-    clone.querySelector('.js-strength').innerText = hero.powerstats.strength;
-    clone.querySelector('.js-combat').innerTextt = hero.combat;
-    clone.querySelector('.js-speed').innerText = hero.powerstats.speed;
-    clone.querySelector('.js-universe').innerText = hero.powerstats.universe;
+    heroDataSet(clone, hero)
+    clone.querySelector('.js-name').innerText = modifyNullValueTxt(hero.name);
+
+    clone.querySelector('.js-durability').innerText = modifyNullValue(hero.powerstats.durability);
+    clone.querySelector('.js-strength').innerText = modifyNullValue(hero.powerstats.strength);
+    // clone.querySelector('.js-combat').innerTextt = modifyNullValue(hero.combat);
+    // clone.querySelector('.js-speed').innerText = modifyNullValue(hero.powerstats.speed);
+    // clone.querySelector('.js-universe').innerText = modifyNullValueTxt(hero.powerstats.universe);
     clone.querySelector('.js-img').src = hero.image.url;
     clone.querySelector('.js-img').alt = altImg;
     target.appendChild(clone);
@@ -262,10 +289,7 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
-    // showingHeroCard(hero, altImg, templateId, showId)
-    console.log(attacker)
-    showingHeroCard(attacker, "attacker", "fight-template", "attacker")
-    showingHeroCard(defender, "defender", "fight-template", "defender")
+    displayAttackerAndDefender(attackerTag,defenderTag,attacker, defender)
 
     let txt = '';
 
@@ -276,6 +300,7 @@ function fight(challengers) {
         txt += `${attacker.name} attaque ${defender.name} et a gagné le combat en lui infligeant ${attackPoints} points de dégats.`;
 
         if (!isAlive(defender)) {
+
             txt += ` ${defender.name} est mort 💀`
         }
     }
@@ -313,32 +338,57 @@ function burnTheDead(charactersArray) {
  * @return {object} -The winner's object
  */
 function startBattleRoyalInterval(characterArray) {
-
+    let round = 0;
     const timer = setInterval(() => {
-        const challengers = getChallengers(characterArray);
-        showFightResult.innerText = fight(challengers)
-        characterArray = burnTheDead(characterArray);
 
         if (characterArray.length === 1) {
             clearInterval(timer);
-            console.table(characterArray[0]);
+            showWinner(characterArray[0])
+            return;
         }
-    }, 1000);
+
+        const challengers = getChallengers(characterArray);
+        showFightResult.innerText = fight(challengers);
+        characterArray = burnTheDead(characterArray);
+        round++;
+    }, 2000);
+}
+
+function showWinner(winner) {
+    showingHeroCard(winner, "the winner", "fight-template", "the-winner");
+    document.getElementById("the-winner").classList.remove("hidden");
+    attackerTag.classList.add("hidden");
+    defenderTag.classList.add("hidden");
+    console.table(winner);
 }
 
 
 
+const searchBtn = document.getElementById("testBtnResearch");
 
 
-////////////////////////////
-
-// `https://www.superheroapi.com/api.php/${apiKey}/search/${query}?maxResults=${maxResults}&startIndex=${startIndex}`
 
 const apiKey = '3e85eda0169c3aa450196a790ac1966f';
 
 async function fetchAllHeroes() {
     try {
         const heroes = [];
+        inputField.addEventListener('keyup', async () => {
+            const inputText = getInputsearchbox(); // Fetch input text when button is clicked
+            const query = inputText.trim();
+            const maxResults = 3;
+            const startIndex = 0;
+            const apiName = `https://www.superheroapi.com/api.php/${apiKey}/search/${query}?maxResults=${maxResults}&startIndex=${startIndex}`;
+            try {
+                const responseByName = await axios.get(apiName);
+                console.log(responseByName.data.results);
+                afterSearch(responseByName.data.results)
+                // Handle the response...
+            } catch (error) {
+                console.error('Error fetching heroes:', error);
+            }
+        });
+
 
         for (let i = 1; i <= 4; i++) {
             let id = getRandomValue(731);
@@ -352,14 +402,14 @@ async function fetchAllHeroes() {
         console.log(heroes);
         //listen to click in all heros (suggestions)
         listenToHeroes('#all-heros .js-hero-card', handleClickHero);
-        listenToHeroes('#selectedItemsList .js-hero-card', handleClickHero);
+
         //button to start fight
         document.getElementById("start-fight").addEventListener("click", () => {
-
             constructionAllHero('#selectedItemsList .js-hero-card');
-            // console.log(characters)
             startFight()
-            // fight(characters)
+            document.getElementById("hide-main").classList.toggle("hidden")
+
+
         })
 
         // infoIcon.addEventListener('click', function () {
@@ -381,3 +431,73 @@ async function fetchAllHeroes() {
 }
 
 fetchAllHeroes();
+
+
+
+function afterSearch(testList) {
+    testList.forEach(hero => {
+        let newHero = document.createElement('inputField');
+        newHero.classList.add('js-suggestion', 'suggestions__itm');
+        newHero.setAttribute('id', hero.id);
+        newHero.addEventListener('click', function () {
+            let clone = fillHeroTemplate(hero);
+            // clone.addEventListener("click",(e)=>{
+
+            // }
+            // )
+            allHeros.appendChild(clone);
+            listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+
+            newHero.remove();
+            removeSuggestionsItem();
+
+
+        });
+        const textItem = document.createTextNode(modifyNullValueTxt(hero.name));
+        newHero.appendChild(textItem);
+        suggestions.appendChild(newHero);
+
+    });
+}
+
+function getInputsearchbox() {
+    const value = document.getElementById("inputField").value;
+    return value;
+}
+
+
+function removeSuggestionsItem() {
+    document.getElementById("inputField").value = '';
+    document.getElementById('suggestions').innerHTML = '';
+}
+
+
+// inputField.addEventListener('keyup', function (event) {
+//     const inputText = inputField.value.trim();
+//     if (inputText !== '') {
+//         suggestions.innerHTML = "";
+//         let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
+
+//         testList.forEach(hero => {
+//             let newHero = document.createElement('button');
+//             newHero.classList.add('js-suggestion', 'suggestions__itm');
+//             newHero.setAttribute('id', hero.id);
+//             newHero.addEventListener('click', function () {
+//                 selectedHeroes.push(hero);
+//                 let clone = fillHeroTemplate(hero);
+//                 // clone.querySelector('.button--minus').addEventListener('click', function (event) {
+//                 //     event.target.parentNode.remove();
+//                 // });
+//                 selectedItemsList.appendChild(clone);
+//                 newHero.remove();
+//             });
+//             const textItem = document.createTextNode(hero.name);
+//             newHero.appendChild(textItem);
+//             suggestions.appendChild(newHero);
+//         });
+//     } else {
+//         suggestions.innerHTML = '';
+//     }
+// });
+
+
