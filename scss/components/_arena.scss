@@ -3,13 +3,20 @@
     height: 100%;
 
     &__defender {
-        width: 17.125rem;
-        margin: 0rem 1.6875rem 0 5.75rem;
+        background-image: url(/img/defender-background.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 65%;
+        margin: auto;
+        margin-bottom: 2rem;
     }
 
     &__attacker {
-        width: 17.125rem;
-        margin: 2rem 5.75rem 0 1.6875rem;
+        background-image: url(/img/attacker-background.png);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        width: 65%;
+        margin: auto;
     }
 
     &__logo {
@@ -36,4 +43,17 @@
         border-radius: 1rem;
         margin: 2rem 1rem 1rem 1rem;
     }
+
+    &__victory-img {
+        padding: 2rem;
+    }
+}
+
+.the-winner {
+    width: 70%;
+    background-image: url(/img/crown.png);
+    background-repeat: no-repeat;
+    background-size: 110%;
+    background-position: center;
+    // background-size: cover;
 }

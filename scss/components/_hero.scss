@@ -21,7 +21,13 @@
         font-size: 1rem;
         z-index: 100;
         bottom: 41%;
+
+        &--fight {
+            font-size: 1.25rem;
+            bottom: 38%;
+        }
     }
+
 
     &__attack {
         position: absolute;
@@ -32,6 +38,12 @@
         text-shadow: 0 2px $black50;
         width: 30px;
         text-align: center;
+
+        &--fight {
+            top: 11%;
+            left: 22%;
+            font-size: 1.5rem;
+        }
     }
 
     &__pv {
@@ -43,6 +55,11 @@
         width: 50px;
         height: 50px;
         text-align: center;
+
+        &--fight {
+            font-size: 2rem;
+            bottom: 12%;
+        }
     }
 
     &__img {
@@ -57,6 +74,11 @@
         position: absolute;
         width: 20%;
         bottom: 21%;
+
+        &--fight {
+            width: 21%;
+            bottom: 15.5%;
+        }
     }
 
     &__infos {
@@ -65,5 +87,7 @@
         top: 0;
         right: 12%;
     }
+
+
 
 }

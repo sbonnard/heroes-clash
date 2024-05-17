@@ -1,13 +1,9 @@
-// import Heroes from "/json/api-heroes.json" with {type: "json" }
-
-
-let characters = []
+let characters = [];
+let txtResult = [];
 
 const inputField = document.getElementById('inputField');
 //ul shows the selected heros (li);
 const selectedItemsList = document.getElementById('selectedItemsList');
-// array shows the selected heros (json);
-// let selectedHeroes = [];
 // //search bar
 const suggestions = document.getElementById('suggestions');
 //ul all showing hero(under name of ttl suggestions)
@@ -15,17 +11,13 @@ const allHeros = document.getElementById('all-heros');
 // array showing hero(under name of ttl suggestions)
 
 const infoIcon = document.getElementById('info-icon');
-
 const overlay = document.querySelector('.js-caracteristics');
-
-let allHerosArray = [];
 
 const heroesTemplate = document.getElementById("heroes-template");
 let showFightResult = document.getElementById('show-fight-result');
 
 
 //hide and show class (display)
-
 const attackerTag = document.getElementById("attacker")
 const defenderTag = document.getElementById("defender")
 
@@ -54,7 +46,11 @@ function fillHeroTemplate(hero) {
     return clone
 }
 
-
+/**
+ * create data set in the class ".js-hero-card"
+ * @param {object} clone a html element
+ * @param {object} hero objects has name, durability,...
+ */
 function heroDataSet(clone, hero) {
     clone.querySelector('.js-hero-card').dataset.name = modifyNullValueTxt(hero.name);
     clone.querySelector('.js-hero-card').dataset.durability = modifyNullValue(hero.powerstats.durability);
@@ -66,12 +62,20 @@ function heroDataSet(clone, hero) {
 
 }
 
-
+/**
+ * return nulled and undefined to random value max 100.
+ * @param {number} value a number.
+ * @returns the value if it doesnt null otherwise a random value max 100.
+ */
 function modifyNullValue(value) {
     return (value === undefined || value === null || value === 'null') ? getRandomValue(100) : value;
 }
 
-
+/**
+ * return nulled and undefined to random value max 100.
+ * @param {number} value a number.
+ * @returns the value if it doesnt null otherwise a random value max 100.
+ */
 function modifyNullValueTxt(name) {
     return (name === undefined || name === null || name === 'null') ? "Unknown" : name;
 
@@ -89,20 +93,50 @@ function showHeros(hero) {
 
 
 
-function getSearchInput() {
-    const inputText = inputField.value.trim();
-    console.log(inputText);
-    if (inputText !== '') {
-        suggestions.innerHTML = "";
-    }
-    // else {
-    //     suggestions.children.remove();
-    // }
+// search functions
 
-    return inputText;
+/**
+ * after search show names and create new hereo.
+ * @param {array} testList array 
+ */
+function afterSearch(testList) {
+    testList.forEach(hero => {
+        let newHero = document.createElement('inputField');
+        newHero.classList.add('js-suggestion', 'suggestions__itm');
+        newHero.setAttribute('id', hero.id);
+        newHero.addEventListener('click', function () {
+            let clone = fillHeroTemplate(hero);
+            allHeros.appendChild(clone);
+            listenToHeroes('#all-heros .js-hero-card', handleClickHero);
+            newHero.remove();
+            removeSuggestionsItem();
+
+
+        });
+        const textItem = document.createTextNode(modifyNullValueTxt(hero.name));
+        newHero.appendChild(textItem);
+        suggestions.appendChild(newHero);
+
+    });
 }
 
-getSearchInput()
+/**
+ * get the value from the input search.
+ * @returns {*}
+ */
+function getInputsearchbox() {
+    const value = document.getElementById("inputField").value;
+    return value;
+}
+
+/**
+ * remove sugestions from the search
+ */
+function removeSuggestionsItem() {
+    document.getElementById("inputField").value = '';
+    document.getElementById('suggestions').innerHTML = '';
+}
+
 
 
 
@@ -180,7 +214,7 @@ function startFight() {
 }
 
 
-function displayAttackerAndDefender(attackerTag,defenderTag,attacker, defender) {
+function displayAttackerAndDefender(attackerTag, defenderTag, attacker, defender) {
     // First, make sure the elements are not hidden
     attackerTag.classList.remove("hidden");
     defenderTag.classList.remove("hidden");
@@ -189,8 +223,8 @@ function displayAttackerAndDefender(attackerTag,defenderTag,attacker, defender) 
     // Show attacker and defender info
     showingHeroCard(attacker, "attacker", "fight-template", "attacker");
     showingHeroCard(defender, "defender", "fight-template", "defender");
-    
-   }
+
+}
 
 
 /**
@@ -206,12 +240,8 @@ function showingHeroCard(hero, altImg, templateId, targetId) {
     const target = document.getElementById(targetId);
     heroDataSet(clone, hero)
     clone.querySelector('.js-name').innerText = modifyNullValueTxt(hero.name);
-
     clone.querySelector('.js-durability').innerText = modifyNullValue(hero.powerstats.durability);
     clone.querySelector('.js-strength').innerText = modifyNullValue(hero.powerstats.strength);
-    // clone.querySelector('.js-combat').innerTextt = modifyNullValue(hero.combat);
-    // clone.querySelector('.js-speed').innerText = modifyNullValue(hero.powerstats.speed);
-    // clone.querySelector('.js-universe').innerText = modifyNullValueTxt(hero.powerstats.universe);
     clone.querySelector('.js-img').src = hero.image.url;
     clone.querySelector('.js-img').alt = altImg;
     target.appendChild(clone);
@@ -289,7 +319,7 @@ function getChallengers(charactersList) {
 function fight(challengers) {
     const attacker = challengers[0];
     const defender = challengers[1];
-    displayAttackerAndDefender(attackerTag,defenderTag,attacker, defender)
+    displayAttackerAndDefender(attackerTag, defenderTag, attacker, defender)
 
     let txt = '';
 
@@ -307,7 +337,8 @@ function fight(challengers) {
     else {
         txt += `${defender.name} a contré l'attaque de ${attacker.name}.`;
     }
-
+    txtResult.push(txt)
+    console.log(txtResult);
     return txt;
 }
 
@@ -357,8 +388,10 @@ function startBattleRoyalInterval(characterArray) {
 function showWinner(winner) {
     showingHeroCard(winner, "the winner", "fight-template", "the-winner");
     document.getElementById("the-winner").classList.remove("hidden");
+    document.getElementById("winner-page").classList.remove("hidden");
     attackerTag.classList.add("hidden");
     defenderTag.classList.add("hidden");
+    document.getElementById('arena').classList.add("hidden");
     console.table(winner);
 }
 
@@ -369,7 +402,9 @@ const searchBtn = document.getElementById("testBtnResearch");
 
 
 const apiKey = '3e85eda0169c3aa450196a790ac1966f';
-
+/**
+ * fetch the api from https://www.superheroapi.com/api.
+ */
 async function fetchAllHeroes() {
     try {
         const heroes = [];
@@ -389,7 +424,6 @@ async function fetchAllHeroes() {
             }
         });
 
-
         for (let i = 1; i <= 4; i++) {
             let id = getRandomValue(731);
             const apiUrl = `https://www.superheroapi.com/api.php/${apiKey}/${id}`;
@@ -402,102 +436,29 @@ async function fetchAllHeroes() {
         console.log(heroes);
         //listen to click in all heros (suggestions)
         listenToHeroes('#all-heros .js-hero-card', handleClickHero);
-
         //button to start fight
         document.getElementById("start-fight").addEventListener("click", () => {
             constructionAllHero('#selectedItemsList .js-hero-card');
             startFight()
             document.getElementById("hide-main").classList.toggle("hidden")
 
-
         })
-
         // infoIcon.addEventListener('click', function () {
         //     this.classList.toggle("close");
         //     overlay.classList.toggle("overlay");
         // });
-
         return heroes;
     }
-
-
 
     catch (error) {
         console.error('Error fetching heroes:', error);
         return null;
     }
 
-
 }
 
 fetchAllHeroes();
 
 
-
-function afterSearch(testList) {
-    testList.forEach(hero => {
-        let newHero = document.createElement('inputField');
-        newHero.classList.add('js-suggestion', 'suggestions__itm');
-        newHero.setAttribute('id', hero.id);
-        newHero.addEventListener('click', function () {
-            let clone = fillHeroTemplate(hero);
-            // clone.addEventListener("click",(e)=>{
-
-            // }
-            // )
-            allHeros.appendChild(clone);
-            listenToHeroes('#all-heros .js-hero-card', handleClickHero);
-
-            newHero.remove();
-            removeSuggestionsItem();
-
-
-        });
-        const textItem = document.createTextNode(modifyNullValueTxt(hero.name));
-        newHero.appendChild(textItem);
-        suggestions.appendChild(newHero);
-
-    });
-}
-
-function getInputsearchbox() {
-    const value = document.getElementById("inputField").value;
-    return value;
-}
-
-
-function removeSuggestionsItem() {
-    document.getElementById("inputField").value = '';
-    document.getElementById('suggestions').innerHTML = '';
-}
-
-
-// inputField.addEventListener('keyup', function (event) {
-//     const inputText = inputField.value.trim();
-//     if (inputText !== '') {
-//         suggestions.innerHTML = "";
-//         let testList = Heroes.filter(hero => hero.name.toLowerCase().includes(inputText.toLowerCase())).sort((a, b) => a.name.localeCompare(b.name));
-
-//         testList.forEach(hero => {
-//             let newHero = document.createElement('button');
-//             newHero.classList.add('js-suggestion', 'suggestions__itm');
-//             newHero.setAttribute('id', hero.id);
-//             newHero.addEventListener('click', function () {
-//                 selectedHeroes.push(hero);
-//                 let clone = fillHeroTemplate(hero);
-//                 // clone.querySelector('.button--minus').addEventListener('click', function (event) {
-//                 //     event.target.parentNode.remove();
-//                 // });
-//                 selectedItemsList.appendChild(clone);
-//                 newHero.remove();
-//             });
-//             const textItem = document.createTextNode(hero.name);
-//             newHero.appendChild(textItem);
-//             suggestions.appendChild(newHero);
-//         });
-//     } else {
-//         suggestions.innerHTML = '';
-//     }
-// });
 
 
