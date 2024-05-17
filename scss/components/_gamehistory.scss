@@ -1,7 +1,8 @@
 .gamehistory{
-    width: 80%;
-    margin: 0 15%;
-    margin-top: 5rem;
+    
+    width: 22,5625rem;
+    margin: 0 1rem;
+    margin-top: 2rem;
     border-radius: 2rem;
     font-family: oswald;
     color: $cream;
@@ -9,21 +10,92 @@
     background-color: $cream;
 
     &--sectionheader{
-        width: 19.25rem;
-        margin: 0 2.6875rem;
         background-color: $grey;
         border-radius: 2rem;
-        padding: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 0.8rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         font-family: oswald;
+        font-size: 1rem;
         text-align: center;
-        margin-bottom: -8rem;
-        position: absolute;
     }
 
-    &__game{
-        border-radius: 2rem;
-        &--victory{
-            background-color: aquamarine;
+    &__victory{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        height: 5.240625rem;
+        border-radius: 0.65625rem;
+        background-color: #B9FFC4;
+        margin: 1rem;
+        color: $black;
+        font-size: 0.75rem;
+
+        &__card-thumbnail{
+            background-image: url(/img/card-frame.webp);
+            height: 4.109375rem;
+            width: 3.215625rem;
+            margin: 0.6rem;
+        }
+
+        &__gain{
+            margin: 0 0.5625rem;
+            padding: 1rem;
+            padding-top: 1.2rem;
+            width: 4.125rem;
+            height: 4.125rem;
+            border-radius: 0.375rem;
+            background-color: #E6FEEA;
+            font-size: 1.90625rem;
+            font-weight: bold;
+            color: #34FF55;
+        }
+
+        &__ttl{
+            color: #34FF55;
+            font-size: 1.4375rem;
+        }
+    }
+
+    &__defeat{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        height: 5.240625rem;
+        border-radius: 0.65625rem;
+        background-color: #FFB9B9;
+        margin: 1rem;
+        color: $black;
+        font-size: 0.75rem;
+
+        &__card-thumbnail{
+            background-image: url(/img/card-frame.webp);
+            height: 4.109375rem;
+            width: 3.215625rem;
+            margin: 0.6rem;
+        }
+
+        &__gain{
+            margin: 0 0.5625rem;
+            padding: 1rem;
+            padding-top: 1.2rem;
+            width: 4.125rem;
+            height: 4.125rem;
+            border-radius: 0.375rem;
+            background-color: #FEE6E6;
+            font-size: 1.90625rem;
+            font-weight: bold;
+            color: #FF5757;
+        }
+
+        &__ttl{
+            color: #FF5757;
+            font-size: 1.4375rem;
         }
     }
 }

@@ -20,7 +20,7 @@
     </header>
     <section class="username">
         <img src="./img/Logo.png" alt="logo" class="username__icon">
-        <p class="ttl--pseudo">Pseudo</p>
+        <h1 class="ttl--pseudo">Pseudo</h1>
     </section>
 
     <div class="container--account">
@@ -42,21 +42,72 @@
     <!-- ? ============================= -->
     <!-- ! Historique de partie -->
     <!-- ? ============================= -->
-    <div class="gamehistory--sectionheader">
-        <h2>Historique de partie</h2>
-    </div>
     <section class="gamehistory">
-        
-        <ul>
-            <li>
-                <div class="gamehistory__game--victory">
-                    
+
+        <div class="gamehistory--sectionheader">
+            <h2>Historique de partie</h2>
+        </div>
+
+        <div class="slider"> <!-- ! Animation du slider a voir pour plus tard-->
+            <!-- ? Cas de victoire-->
+            <div class="gamehistory__victory">
+                <img src="/img/card-frame.webp" alt="Winner Thumbnail" class="gamehistory__victory__card-thumbnail">
+                <div>
+                    <h3 class="gamehistory__victory__ttl">Victoire!</h3>
+                    <p>Victoires totales avec Hulk : 12</p>
+                    <p>Gain total avec Hulk : 844</p>
                 </div>
-            </li>
-        </ul>
+                <div class="gamehistory__victory__gain">+55</div>
+            </div>
+
+            <!-- ? Cas de victoire-->
+            <div class="gamehistory__victory">
+                <img src="/img/card-frame.webp" alt="Winner Thumbnail" class="gamehistory__victory__card-thumbnail">
+                <div>
+                    <h3 class="gamehistory__victory__ttl">Victoire!</h3>
+                    <p>Victoires totales avec Hulk : 11</p>
+                    <p>Gain total avec Hulk : 789</p>
+                </div>
+                <div class="gamehistory__victory__gain">+20</div>
+            </div>
+
+            <!-- ? Cas de défaite-->
+            <div class="gamehistory__defeat">
+                <img src="/img/card-frame.webp" alt="Winner Thumbnail" class="gamehistory__defeat__card-thumbnail">
+                <div>
+                    <h3 class="gamehistory__defeat__ttl">Défaite!</h3>
+                    <p>Victoires totales avec Hulk : 10</p>
+                    <p>Gain total avec Hulk : 789</p>
+                </div>
+                <div class="gamehistory__defeat__gain">-15</div>
+            </div>
+
+            <!-- ? Cas de victoire-->
+            <div class="gamehistory__victory">
+                <img src="/img/card-frame.webp" alt="Winner Thumbnail" class="gamehistory__victory__card-thumbnail">
+                <div>
+                    <h3 class="gamehistory__victory__ttl">Victoire!</h3>
+                    <p>Victoires totales avec Hulk : 10</p>
+                    <p>Gain total avec Hulk : 789</p>
+                </div>
+                <div class="gamehistory__victory__gain">+350</div>
+            </div>
+
+            <!-- ? Cas de défaite-->
+            <div class="gamehistory__defeat">
+                <img src="/img/card-frame.webp" alt="Winner Thumbnail" class="gamehistory__defeat__card-thumbnail">
+                <div>
+                    <h3 class="gamehistory__defeat__ttl">Défaite!</h3>
+                    <p>Victoires totales avec Hulk : 9</p>
+                    <p>Gain total avec Hulk : 439</p>
+                </div>
+                <div class="gamehistory__defeat__gain">-150</div>
+            </div>
+
+
+        </div>
+        
     </section>
-    
-    </div>
 </body>
 
 </html>
