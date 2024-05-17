@@ -6,4 +6,10 @@
     border-radius: 100%;
     margin: auto;
     border: 3px solid $black;
+
+    &__close-button {
+        width: 2rem;
+        position: absolute;
+        margin-left: 75%;
+    }
 }
